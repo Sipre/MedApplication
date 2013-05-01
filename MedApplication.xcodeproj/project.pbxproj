@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE648C401731A63C006D9C98 /* MedicineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE648C3F1731A63C006D9C98 /* MedicineCell.m */; };
+		CEBEE3D5173182C6008FB021 /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEE3D4173182C6008FB021 /* Medicine.m */; };
+		CEC30CD2173098090079798B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD1173098090079798B /* UIKit.framework */; };
+		CEC30CD4173098090079798B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD3173098090079798B /* Foundation.framework */; };
+		CEC30CD6173098090079798B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD5173098090079798B /* CoreGraphics.framework */; };
+		CEC30CD8173098090079798B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD7173098090079798B /* CoreData.framework */; };
+		CEC30CDE173098090079798B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEC30CDC173098090079798B /* InfoPlist.strings */; };
+		CEC30CE0173098090079798B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30CDF173098090079798B /* main.m */; };
+		CEC30CE4173098090079798B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30CE3173098090079798B /* AppDelegate.m */; };
+		CEC30CE6173098090079798B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC30CE5173098090079798B /* Default.png */; };
+		CEC30CE8173098090079798B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC30CE7173098090079798B /* Default@2x.png */; };
+		CEC30CEA173098090079798B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC30CE9173098090079798B /* Default-568h@2x.png */; };
+		CEC30CED173098090079798B /* MedApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEC30CEB173098090079798B /* MedApplication.xcdatamodeld */; };
+		CEC30CF4173098320079798B /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC30CF3173098320079798B /* Storyboard.storyboard */; };
+		CEC30CF8173098BD0079798B /* MainMenuVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30CF7173098BD0079798B /* MainMenuVC.m */; };
+		CEC30CFD17309C7C0079798B /* MedicineListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30CFC17309C7C0079798B /* MedicineListVC.m */; };
+		CEC30D0117309E600079798B /* ScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30D0017309E600079798B /* ScheduleVC.m */; };
+		CEC30D051730A1AE0079798B /* AddMedicineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30D041730A1AE0079798B /* AddMedicineVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE648C3E1731A63C006D9C98 /* MedicineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicineCell.h; sourceTree = "<group>"; };
+		CE648C3F1731A63C006D9C98 /* MedicineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicineCell.m; sourceTree = "<group>"; };
+		CEBEE3D3173182C6008FB021 /* Medicine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicine.h; sourceTree = "<group>"; };
+		CEBEE3D4173182C6008FB021 /* Medicine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicine.m; sourceTree = "<group>"; };
+		CEC30CCD173098090079798B /* MedApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEC30CD1173098090079798B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEC30CD3173098090079798B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEC30CD5173098090079798B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEC30CD7173098090079798B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CEC30CDB173098090079798B /* MedApplication-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MedApplication-Info.plist"; sourceTree = "<group>"; };
+		CEC30CDD173098090079798B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEC30CDF173098090079798B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEC30CE1173098090079798B /* MedApplication-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MedApplication-Prefix.pch"; sourceTree = "<group>"; };
+		CEC30CE2173098090079798B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CEC30CE3173098090079798B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CEC30CE5173098090079798B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CEC30CE7173098090079798B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CEC30CE9173098090079798B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CEC30CEC173098090079798B /* MedApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MedApplication.xcdatamodel; sourceTree = "<group>"; };
+		CEC30CF3173098320079798B /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		CEC30CF6173098BD0079798B /* MainMenuVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuVC.h; sourceTree = "<group>"; };
+		CEC30CF7173098BD0079798B /* MainMenuVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuVC.m; sourceTree = "<group>"; };
+		CEC30CFB17309C7C0079798B /* MedicineListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicineListVC.h; sourceTree = "<group>"; };
+		CEC30CFC17309C7C0079798B /* MedicineListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicineListVC.m; sourceTree = "<group>"; };
+		CEC30CFF17309E600079798B /* ScheduleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleVC.h; sourceTree = "<group>"; };
+		CEC30D0017309E600079798B /* ScheduleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleVC.m; sourceTree = "<group>"; };
+		CEC30D031730A1AE0079798B /* AddMedicineVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMedicineVC.h; sourceTree = "<group>"; };
+		CEC30D041730A1AE0079798B /* AddMedicineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMedicineVC.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEC30CCA173098090079798B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC30CD2173098090079798B /* UIKit.framework in Frameworks */,
+				CEC30CD4173098090079798B /* Foundation.framework in Frameworks */,
+				CEC30CD6173098090079798B /* CoreGraphics.framework in Frameworks */,
+				CEC30CD8173098090079798B /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEC30CC2173098090079798B = {
+			isa = PBXGroup;
+			children = (
+				CEC30CD9173098090079798B /* MedApplication */,
+				CEC30CD0173098090079798B /* Frameworks */,
+				CEC30CCE173098090079798B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEC30CCE173098090079798B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CCD173098090079798B /* MedApplication.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEC30CD0173098090079798B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CD1173098090079798B /* UIKit.framework */,
+				CEC30CD3173098090079798B /* Foundation.framework */,
+				CEC30CD5173098090079798B /* CoreGraphics.framework */,
+				CEC30CD7173098090079798B /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEC30CD9173098090079798B /* MedApplication */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CF5173098940079798B /* Main Menu */,
+				CEC30D021730A18B0079798B /* Add Medicine */,
+				CEC30CFA17309C490079798B /* Medicine List */,
+				CEC30CFE17309DF80079798B /* Schedule */,
+				CEC30CE2173098090079798B /* AppDelegate.h */,
+				CEC30CE3173098090079798B /* AppDelegate.m */,
+				CEC30CEB173098090079798B /* MedApplication.xcdatamodeld */,
+				CEC30CF3173098320079798B /* Storyboard.storyboard */,
+				CEC30CDA173098090079798B /* Supporting Files */,
+				CEBEE3D3173182C6008FB021 /* Medicine.h */,
+				CEBEE3D4173182C6008FB021 /* Medicine.m */,
+			);
+			path = MedApplication;
+			sourceTree = "<group>";
+		};
+		CEC30CDA173098090079798B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CDB173098090079798B /* MedApplication-Info.plist */,
+				CEC30CDC173098090079798B /* InfoPlist.strings */,
+				CEC30CDF173098090079798B /* main.m */,
+				CEC30CE1173098090079798B /* MedApplication-Prefix.pch */,
+				CEC30CE5173098090079798B /* Default.png */,
+				CEC30CE7173098090079798B /* Default@2x.png */,
+				CEC30CE9173098090079798B /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEC30CF5173098940079798B /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CF6173098BD0079798B /* MainMenuVC.h */,
+				CEC30CF7173098BD0079798B /* MainMenuVC.m */,
+			);
+			name = "Main Menu";
+			sourceTree = "<group>";
+		};
+		CEC30CFA17309C490079798B /* Medicine List */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CFB17309C7C0079798B /* MedicineListVC.h */,
+				CEC30CFC17309C7C0079798B /* MedicineListVC.m */,
+				CE648C3E1731A63C006D9C98 /* MedicineCell.h */,
+				CE648C3F1731A63C006D9C98 /* MedicineCell.m */,
+			);
+			name = "Medicine List";
+			sourceTree = "<group>";
+		};
+		CEC30CFE17309DF80079798B /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30CFF17309E600079798B /* ScheduleVC.h */,
+				CEC30D0017309E600079798B /* ScheduleVC.m */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		CEC30D021730A18B0079798B /* Add Medicine */ = {
+			isa = PBXGroup;
+			children = (
+				CEC30D031730A1AE0079798B /* AddMedicineVC.h */,
+				CEC30D041730A1AE0079798B /* AddMedicineVC.m */,
+			);
+			name = "Add Medicine";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEC30CCC173098090079798B /* MedApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEC30CF0173098090079798B /* Build configuration list for PBXNativeTarget "MedApplication" */;
+			buildPhases = (
+				CEC30CC9173098090079798B /* Sources */,
+				CEC30CCA173098090079798B /* Frameworks */,
+				CEC30CCB173098090079798B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MedApplication;
+			productName = MedApplication;
+			productReference = CEC30CCD173098090079798B /* MedApplication.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEC30CC4173098090079798B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = Lalo;
+			};
+			buildConfigurationList = CEC30CC7173098090079798B /* Build configuration list for PBXProject "MedApplication" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CEC30CC2173098090079798B;
+			productRefGroup = CEC30CCE173098090079798B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEC30CCC173098090079798B /* MedApplication */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEC30CCB173098090079798B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC30CDE173098090079798B /* InfoPlist.strings in Resources */,
+				CEC30CE6173098090079798B /* Default.png in Resources */,
+				CEC30CE8173098090079798B /* Default@2x.png in Resources */,
+				CEC30CEA173098090079798B /* Default-568h@2x.png in Resources */,
+				CEC30CF4173098320079798B /* Storyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEC30CC9173098090079798B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEC30CE0173098090079798B /* main.m in Sources */,
+				CEC30CE4173098090079798B /* AppDelegate.m in Sources */,
+				CEC30CED173098090079798B /* MedApplication.xcdatamodeld in Sources */,
+				CEC30CF8173098BD0079798B /* MainMenuVC.m in Sources */,
+				CEC30CFD17309C7C0079798B /* MedicineListVC.m in Sources */,
+				CEC30D0117309E600079798B /* ScheduleVC.m in Sources */,
+				CEC30D051730A1AE0079798B /* AddMedicineVC.m in Sources */,
+				CEBEE3D5173182C6008FB021 /* Medicine.m in Sources */,
+				CE648C401731A63C006D9C98 /* MedicineCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEC30CDC173098090079798B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEC30CDD173098090079798B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEC30CEE173098090079798B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEC30CEF173098090079798B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEC30CF1173098090079798B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MedApplication/MedApplication-Prefix.pch";
+				INFOPLIST_FILE = "MedApplication/MedApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEC30CF2173098090079798B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MedApplication/MedApplication-Prefix.pch";
+				INFOPLIST_FILE = "MedApplication/MedApplication-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEC30CC7173098090079798B /* Build configuration list for PBXProject "MedApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC30CEE173098090079798B /* Debug */,
+				CEC30CEF173098090079798B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEC30CF0173098090079798B /* Build configuration list for PBXNativeTarget "MedApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEC30CF1173098090079798B /* Debug */,
+				CEC30CF2173098090079798B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CEC30CEB173098090079798B /* MedApplication.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEC30CEC173098090079798B /* MedApplication.xcdatamodel */,
+			);
+			currentVersion = CEC30CEC173098090079798B /* MedApplication.xcdatamodel */;
+			path = MedApplication.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CEC30CC4173098090079798B /* Project object */;
+}
