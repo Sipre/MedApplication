@@ -73,6 +73,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE648C521731E9C0006D9C98 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		CEC30CC2173098090079798B = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +111,7 @@
 		CEC30CD9173098090079798B /* MedApplication */ = {
 			isa = PBXGroup;
 			children = (
+				CE648C521731E9C0006D9C98 /* Core Data */,
 				CEC30CF5173098940079798B /* Main Menu */,
 				CEC30D021730A18B0079798B /* Add Medicine */,
 				CEC30CFA17309C490079798B /* Medicine List */,
