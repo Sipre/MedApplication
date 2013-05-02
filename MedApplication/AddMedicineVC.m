@@ -9,9 +9,7 @@
 #import "AddMedicineVC.h"
 #import "AppDelegate.h"
 
-@interface AddMedicineVC (){
-    NSManagedObjectContext *context;
-}
+@interface AddMedicineVC ()
 
 @end
 
@@ -23,22 +21,17 @@
 @synthesize quantityTextField;
 @synthesize frecuencyTextField;
 @synthesize durationTextField;
-@synthesize testLabel;
-
-@synthesize medicineAttributes;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
-    context = [appdelegate managedObjectContext];
     
     NSArray *tempData = [self searchMedicine:@"*"];
-    NSString *t = [NSString stringWithFormat:@"Medicine count: %d",tempData.count];
-    NSLog(t);
+    NSString *conteo = [NSString stringWithFormat:@"Medicine count: %d",tempData.count];
+    NSLog(@"%@",conteo);
     //Birrueta 2150
 }
 
-#pragma mark - Name And Type
+#pragma mark - Name And Type View
 
 - (IBAction)back1:(id)sender {
     NSLog(@"Back to Main Menu");
@@ -61,7 +54,7 @@
     
 }
 
-#pragma mark - Q F & D
+#pragma mark - Q F & D View
 - (IBAction)back2:(id)sender {
     [self.quantityTextField resignFirstResponder];
     [self.frecuencyTextField resignFirstResponder];
@@ -76,23 +69,20 @@
     [self slideView:secondView direction:YES];
 }
 
-#pragma mark - Summary
+#pragma mark - Summary View
 - (IBAction)back3:(id)sender {
     [self slideView:secondView direction:NO];
 }
 
 - (IBAction)done:(id)sender {
-    medicineAttributes = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *medicineAttributes = [[NSMutableDictionary alloc] init];
     
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
     [medicineAttributes setValue:frecuencyTextField.text   forKey:@"frecuency"];
     [medicineAttributes setValue:durationTextField.text    forKey:@"duration"];
     
-    
     [self addMedicine:medicineAttributes];
-    
-    
     [self openNewViewController:@"MainMenu"];
 }
 
@@ -176,68 +166,6 @@
                                          otherButtonTitles:nil, nil];
     [alert show];
 
-}
-
-#pragma mark - Core Data Methods
-
-- (void)addMedicine: (NSDictionary *)medicine{
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
-    NSManagedObject *newMedicine = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
-    
-      NSLog(@"%@",[medicine valueForKey:@"name"]);
-    
-    [newMedicine setValue:[medicine valueForKey:@"name"] forKey:@"name"];
-    [newMedicine setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
-    [newMedicine setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
-    [newMedicine setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
-    
-  
-    
-    NSError *error;
-    [context save:&error];
-    NSLog(@"Added medicine");
-}
-
-- (NSArray *)searchMedicine:(NSString *)name{
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:entityDesc];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name like %@",name];
-    [request setPredicate:predicate];
-    NSError *error;
-    NSArray *matchingData = [context executeFetchRequest:request error:&error];
-    /*
-    if (matchingData.count <= 0) {
-        NSLog(@"No such medicine on database");
-    }
-    else {
-        for (NSManagedObject *obj in matchingData) {
-            NSLog(@"Name: %@",[obj valueForKey:@"name"]);
-        }
-        testLabel.text = [NSString stringWithFormat:@"%d medicines found",matchingData.count];
-    }
-     */
-    return matchingData;
-}
-
-- (void) deleteMedicine:(NSString *)name{
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
-    NSFetchRequest *request = [NSFetchRequest new];
-    [request setEntity:entityDesc];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name like %@",name];
-    [request setPredicate:predicate];
-    NSError *error;
-    NSArray *matchingData = [context executeFetchRequest:request error:&error];
-    if(matchingData.count <= 0){
-        NSLog(@"No medicine with name %@ found",name);
-    }
-    else{
-        for (NSManagedObject *obj in matchingData) {
-            [context deleteObject:obj];
-            NSLog(@"Medicine with name %@ deleted",name);
-        }
-        [context save:&error];
-    }
 }
 
 @end

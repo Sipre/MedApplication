@@ -15,26 +15,20 @@
 @property (strong, nonatomic) IBOutlet UIView *firstView;
 - (IBAction)back1:(id)sender;
 - (IBAction)next1:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *testLabel;
 
 @property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 
 #pragma mark - Quantity, Frecuency and Duration
 @property (strong, nonatomic) IBOutlet UIView *secondView;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *next2Button;
-- (IBAction)back2:(id)sender;
-- (IBAction)next2:(id)sender;
 @property (strong, nonatomic) IBOutlet UITextField *quantityTextField;
 @property (strong, nonatomic) IBOutlet UITextField *frecuencyTextField;
 @property (strong, nonatomic) IBOutlet UITextField *durationTextField;
+- (IBAction)back2:(id)sender;
+- (IBAction)next2:(id)sender;
 
 #pragma mark - Summary
 @property (strong, nonatomic) IBOutlet UIView *ThirdView;
 - (IBAction)back3:(id)sender;
 - (IBAction)done:(id)sender;
-
-- (void)searchMedicine:(NSString *)name;
-
-@property (strong, nonatomic) NSMutableDictionary *medicineAttributes;
 
 @end

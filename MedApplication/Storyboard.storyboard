@@ -230,11 +230,6 @@
                                             <outlet property="delegate" destination="TFX-zk-M60" id="oHb-48-3vw"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyM-Lh-Wh3">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.61699643342391308" green="0.073848789714524438" blue="0.040954442130572484" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -244,8 +239,6 @@
                                     <constraint firstAttribute="trailing" secondItem="1aL-Tc-gYl" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="N4B-JA-bpL"/>
                                     <constraint firstItem="8UZ-X1-EdG" firstAttribute="leading" secondItem="reC-0E-tTi" secondAttribute="leading" type="default" id="SD5-Xj-YDg"/>
                                     <constraint firstItem="8UZ-X1-EdG" firstAttribute="top" secondItem="reC-0E-tTi" secondAttribute="top" type="default" id="YhL-uK-tYa"/>
-                                    <constraint firstItem="NyM-Lh-Wh3" firstAttribute="top" secondItem="reC-0E-tTi" secondAttribute="top" constant="159" id="hHu-Um-tHC"/>
-                                    <constraint firstItem="NyM-Lh-Wh3" firstAttribute="centerX" secondItem="1aL-Tc-gYl" secondAttribute="centerX" type="default" id="xbZ-Ul-zVW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -273,7 +266,6 @@
                         <outlet property="nameTextField" destination="1aL-Tc-gYl" id="BOa-Dk-Tax"/>
                         <outlet property="quantityTextField" destination="F6q-qy-meb" id="fRM-9r-Oje"/>
                         <outlet property="secondView" destination="gKd-og-tS3" id="dQT-KG-Kgx"/>
-                        <outlet property="testLabel" destination="NyM-Lh-Wh3" id="yPP-ZD-lHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkK-XY-UO8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -386,60 +378,6 @@
             <point key="canvasLocation" x="-265" y="-101"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddMedicineVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddMedicineVC.h"/>
-            <relationships>
-                <relationship kind="action" name="back1:"/>
-                <relationship kind="action" name="back2:"/>
-                <relationship kind="action" name="back3:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="next1:"/>
-                <relationship kind="action" name="next2:"/>
-                <relationship kind="outlet" name="ThirdView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="durationTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="frecuencyTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="next2Button" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="quantityTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="secondView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="testLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainMenuVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainMenuVC.h"/>
-            <relationships>
-                <relationship kind="action" name="add:"/>
-                <relationship kind="action" name="list:"/>
-                <relationship kind="action" name="schedule:"/>
-            </relationships>
-        </class>
-        <class className="MedicineCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MedicineCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="medicineImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="medicineNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MedicineListVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MedicineListVC.h"/>
-            <relationships>
-                <relationship kind="action" name="back:"/>
-                <relationship kind="action" name="rightNavButton:"/>
-                <relationship kind="outlet" name="medicineTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="ScheduleVC" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScheduleVC.h"/>
-            <relationships>
-                <relationship kind="action" name="back:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
