@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MedicineCell.h"
+#import "CoreDataVC.h"
 
-@interface MedicineListVC : UIViewController
+@interface MedicineListVC : CoreDataVC  
 
 - (IBAction)back:(id)sender;
 - (IBAction)rightNavButton:(id)sender;

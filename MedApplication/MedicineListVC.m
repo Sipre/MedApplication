@@ -7,6 +7,8 @@
 //
 
 #import "MedicineListVC.h"
+#import "CoreDataVC.h"
+#import "AppDelegate.h"
 
 @interface MedicineListVC ()
 
@@ -22,6 +24,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    //CoreDataVC *siii = [CoreDataVC new];
+    [self searchMedicine:@"*"];
+    
+
+    
+    //[self searchMedicine:@"*"];
 }
 
 - (void)didReceiveMemoryWarning

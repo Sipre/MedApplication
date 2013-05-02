@@ -25,6 +25,8 @@
 @synthesize durationTextField;
 @synthesize testLabel;
 
+@synthesize medicineAttributes;
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
@@ -65,7 +67,17 @@
 }
 
 - (IBAction)done:(id)sender {
-    //[self addMedicine];
+    medicineAttributes = [[NSMutableDictionary alloc] init];
+    
+    [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
+    [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
+    [medicineAttributes setValue:frecuencyTextField.text   forKey:@"frecuency"];
+    [medicineAttributes setValue:durationTextField.text    forKey:@"duration"];
+    
+    
+    [self addMedicine:medicineAttributes];
+    
+    
     [self openNewViewController:@"MainMenu"];
 }
 
@@ -127,13 +139,19 @@
 
 #pragma mark - Core Data Methods
 
-- (void)addMedicine{
+- (void)addMedicine: (NSDictionary *)medicine{
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
     NSManagedObject *newMedicine = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
-    [newMedicine setValue:self.nameTextField.text forKey:@"name"];
-    [newMedicine setValue:self.quantityTextField.text forKey:@"quantity"];
-    [newMedicine setValue:self.frecuencyTextField.text forKey:@"frecuency"];
-    [newMedicine setValue:self.durationTextField.text forKey:@"duration"];
+    
+      NSLog(@"%@",[medicine valueForKey:@"name"]);
+    
+    [newMedicine setValue:[medicine valueForKey:@"name"] forKey:@"name"];
+    [newMedicine setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
+    [newMedicine setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
+    [newMedicine setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
+    
+  
+    
     NSError *error;
     [context save:&error];
     NSLog(@"Added medicine");
