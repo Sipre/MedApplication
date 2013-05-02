@@ -18,8 +18,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    // Sipre
-    //birru
+    // Sipre 21.46
 }
 
 #pragma mark - Button Actions Methods
