@@ -20,7 +20,9 @@
 	// Do any additional setup after loading the view.
    //sipre  push
     //BIRRU PUSH 1
+    //sipre push 2
     
+    //sipre 3
     //BIRRU 2
 }
 
