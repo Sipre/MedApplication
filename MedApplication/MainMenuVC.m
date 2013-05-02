@@ -20,6 +20,8 @@
 	// Do any additional setup after loading the view.
    //sipre  push
     //BIRRU PUSH 1
+    
+    //BIRRU 2
 }
 
 #pragma mark - Button Actions Methods
