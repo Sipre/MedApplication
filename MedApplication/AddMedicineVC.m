@@ -29,7 +29,11 @@
     [super viewDidLoad];
     AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
-    [self searchMedicine:@"*"];
+    
+    NSArray *tempData = [self searchMedicine:@"*"];
+    //NSLog([NSString stringWithFormat:@"Medicine count: %d",tempData.count]);
+    //Birrueta 2150
+
 }
 
 #pragma mark - Name And Type
@@ -40,8 +44,19 @@
 }
 
 - (IBAction)next1:(id)sender {
-    [self.nameTextField resignFirstResponder];
-    [self slideView:firstView direction:YES];
+    NSArray *data = [self searchMedicine:nameTextField.text];
+    
+    if ([self isTextFieldEmpty:nameTextField:@"name" ] == NO){
+        if(data.count > 0){
+            [self medicineNameRepeated];
+            NSLog(@"Repeated medicine name");            
+        }
+        else{
+            [self.nameTextField resignFirstResponder];
+            [self slideView:firstView direction:YES];
+        }
+    }
+    
 }
 
 #pragma mark - Q F & D
@@ -65,7 +80,7 @@
 }
 
 - (IBAction)done:(id)sender {
-    //[self addMedicine];
+    [self addMedicine];
     [self openNewViewController:@"MainMenu"];
 }
 
@@ -125,6 +140,32 @@
     
 }
 
+- (BOOL) isTextFieldEmpty:(UITextField *) textField: (NSString *)attribute{
+    if ([textField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error"
+                                                       message: [NSString stringWithFormat:@"Complete the %@ field",attribute]
+                                                      delegate: self
+                                             cancelButtonTitle:@"Ok"
+                                             otherButtonTitles:nil, nil];
+        [alert show];
+        return YES;
+    }
+    else{
+        return NO;
+    }
+    
+}
+
+- (void) medicineNameRepeated{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Error: name repeated"
+                                                   message: [NSString stringWithFormat:@"%@ already exists in medicine list",nameTextField.text]
+                                                  delegate: self
+                                         cancelButtonTitle:@"Ok"
+                                         otherButtonTitles:nil, nil];
+    [alert show];
+
+}
+
 #pragma mark - Core Data Methods
 
 - (void)addMedicine{
@@ -139,7 +180,7 @@
     NSLog(@"Added medicine");
 }
 
-- (void)searchMedicine:(NSString *)name{
+- (NSArray *)searchMedicine:(NSString *)name{
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
@@ -147,6 +188,7 @@
     [request setPredicate:predicate];
     NSError *error;
     NSArray *matchingData = [context executeFetchRequest:request error:&error];
+    /*
     if (matchingData.count <= 0) {
         NSLog(@"No such medicine on database");
     }
@@ -156,6 +198,8 @@
         }
         testLabel.text = [NSString stringWithFormat:@"%d medicines found",matchingData.count];
     }
+     */
+    return matchingData;
 }
 
 - (void) deleteMedicine:(NSString *)name{
