@@ -54,7 +54,7 @@
     NSLog(@"Added medicine");
 }
 
-- (void)searchMedicine:(NSString *)name{
+- (NSArray *)searchMedicine:(NSString *)name{
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
@@ -62,15 +62,7 @@
     [request setPredicate:predicate];
     NSError *error;
     NSArray *matchingData = [context executeFetchRequest:request error:&error];
-    if (matchingData.count <= 0) {
-        NSLog(@"No such medicine on database");
-    }
-    else {
-        for (NSManagedObject *obj in matchingData) {
-            NSLog(@"Name: %@",[obj valueForKey:@"name"]);
-        }
-       // testLabel.text = [NSString stringWithFormat:@"%d medicines found",matchingData.count];
-    }
+    return matchingData;
 }
 
 - (void) deleteMedicine:(NSString *)name{

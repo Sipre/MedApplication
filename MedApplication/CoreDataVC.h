@@ -12,7 +12,7 @@
 
 @property NSManagedObjectContext *context;
 
-- (void)searchMedicine:(NSString *)name;
+- (NSArray *)searchMedicine:(NSString *)name;
 - (void)addMedicine: (NSDictionary *)medicine;
 - (void) deleteMedicine:(NSString *)name;
 
