@@ -19,6 +19,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
    //sipre  push
+    //BIRRU PUSH 1
 }
 
 #pragma mark - Button Actions Methods
