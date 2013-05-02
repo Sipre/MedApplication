@@ -7,13 +7,16 @@
 //
 
 #import "CoreDataVC.h"
+#import "AppDelegate.h"
 
-
-@interface CoreDataVC ()
-
+@interface CoreDataVC (){
+    
+}
 @end
 
 @implementation CoreDataVC
+
+@synthesize context;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,18 +31,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    context = [appdelegate managedObjectContext];
 }
 
 
 #pragma mark - Core Data Methods
 
-- (void)addMedicine{
+- (void)addMedicine: (NSDictionary *)medicine{
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
     NSManagedObject *newMedicine = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
-    [newMedicine setValue:self.nameTextField.text forKey:@"name"];
-    [newMedicine setValue:self.quantityTextField.text forKey:@"quantity"];
-    [newMedicine setValue:self.frecuencyTextField.text forKey:@"frecuency"];
-    [newMedicine setValue:self.durationTextField.text forKey:@"duration"];
+    
+    NSLog(@"%@",[medicine valueForKey:@"name"]);
+    
+    [newMedicine setValue:[medicine valueForKey:@"name"] forKey:@"name"];
+    [newMedicine setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
+    [newMedicine setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
+    [newMedicine setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
+    
     NSError *error;
     [context save:&error];
     NSLog(@"Added medicine");
@@ -60,7 +69,7 @@
         for (NSManagedObject *obj in matchingData) {
             NSLog(@"Name: %@",[obj valueForKey:@"name"]);
         }
-        testLabel.text = [NSString stringWithFormat:@"%d medicines found",matchingData.count];
+       // testLabel.text = [NSString stringWithFormat:@"%d medicines found",matchingData.count];
     }
 }
 

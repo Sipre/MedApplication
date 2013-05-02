@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE648C401731A63C006D9C98 /* MedicineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE648C3F1731A63C006D9C98 /* MedicineCell.m */; };
+		CE648C681731F43C006D9C98 /* CoreDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE648C671731F43C006D9C98 /* CoreDataVC.m */; };
 		CEBEE3D5173182C6008FB021 /* Medicine.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBEE3D4173182C6008FB021 /* Medicine.m */; };
 		CEC30CD2173098090079798B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD1173098090079798B /* UIKit.framework */; };
 		CEC30CD4173098090079798B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC30CD3173098090079798B /* Foundation.framework */; };
@@ -30,6 +31,8 @@
 /* Begin PBXFileReference section */
 		CE648C3E1731A63C006D9C98 /* MedicineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MedicineCell.h; sourceTree = "<group>"; };
 		CE648C3F1731A63C006D9C98 /* MedicineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MedicineCell.m; sourceTree = "<group>"; };
+		CE648C661731F43C006D9C98 /* CoreDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataVC.h; sourceTree = "<group>"; };
+		CE648C671731F43C006D9C98 /* CoreDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataVC.m; sourceTree = "<group>"; };
 		CEBEE3D3173182C6008FB021 /* Medicine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Medicine.h; sourceTree = "<group>"; };
 		CEBEE3D4173182C6008FB021 /* Medicine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Medicine.m; sourceTree = "<group>"; };
 		CEC30CCD173098090079798B /* MedApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE648C641731F3F1006D9C98 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				CE648C661731F43C006D9C98 /* CoreDataVC.h */,
+				CE648C671731F43C006D9C98 /* CoreDataVC.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		CEC30CC2173098090079798B = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +116,7 @@
 		CEC30CD9173098090079798B /* MedApplication */ = {
 			isa = PBXGroup;
 			children = (
+				CE648C641731F3F1006D9C98 /* Core Data */,
 				CEC30CF5173098940079798B /* Main Menu */,
 				CEC30D021730A18B0079798B /* Add Medicine */,
 				CEC30CFA17309C490079798B /* Medicine List */,
@@ -246,6 +259,7 @@
 				CEC30D051730A1AE0079798B /* AddMedicineVC.m in Sources */,
 				CEBEE3D5173182C6008FB021 /* Medicine.m in Sources */,
 				CE648C401731A63C006D9C98 /* MedicineCell.m in Sources */,
+				CE648C681731F43C006D9C98 /* CoreDataVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

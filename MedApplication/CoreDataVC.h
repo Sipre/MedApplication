@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
-
 
 @interface CoreDataVC : UIViewController
 
-@property (strong, nonatomic) NSManagedObjectContext *context;
+@property NSManagedObjectContext *context;
 
+- (void)searchMedicine:(NSString *)name;
+- (void)addMedicine: (NSDictionary *)medicine;
+- (void) deleteMedicine:(NSString *)name;
 
 @end

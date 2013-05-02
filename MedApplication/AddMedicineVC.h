@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataVC.h"
 
-@interface AddMedicineVC : UIViewController
+@interface AddMedicineVC : CoreDataVC
 
 #pragma mark - Name and Type View
 @property (strong, nonatomic) IBOutlet UIView *firstView;
@@ -31,5 +32,9 @@
 @property (strong, nonatomic) IBOutlet UIView *ThirdView;
 - (IBAction)back3:(id)sender;
 - (IBAction)done:(id)sender;
+
+- (void)searchMedicine:(NSString *)name;
+
+@property (strong, nonatomic) NSMutableDictionary *medicineAttributes;
 
 @end
