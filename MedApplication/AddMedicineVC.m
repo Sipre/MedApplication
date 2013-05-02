@@ -31,9 +31,9 @@
     context = [appdelegate managedObjectContext];
     
     NSArray *tempData = [self searchMedicine:@"*"];
-    //NSLog([NSString stringWithFormat:@"Medicine count: %d",tempData.count]);
+    NSString *t = [NSString stringWithFormat:@"Medicine count: %d",tempData.count];
+    NSLog(t);
     //Birrueta 2150
-
 }
 
 #pragma mark - Name And Type
