@@ -7,6 +7,7 @@
 //
 
 #import "ScheduleVC.h"
+#import "AppDelegate.h"
 
 @interface ScheduleVC ()
 
@@ -22,6 +23,7 @@
 	// Do any additional setup after loading the view.
     medicineList = [NSArray new];
     medicineList = [self searchMedicine:@"*"];
+    
 }
 
 
@@ -72,21 +74,6 @@
 }
 
 
-#pragma mark - Notification.
-
--(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate{
-    
-    UILocalNotification *notification = [UILocalNotification new];
-    [notification setAlertBody:@"It's Time to Take Your Medicnie"];
-    notification.timeZone = [NSTimeZone defaultTimeZone];
-    notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
-    notification.repeatInterval =NSWeekCalendarUnit;
-    notification.fireDate = myFireDate;
-    notification.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    return notification;
-    
-}
 
 
 @end

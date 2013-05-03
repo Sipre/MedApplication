@@ -43,6 +43,10 @@ int durationUpperLimit = 31;
     NSLog(@"%@",conteo);
     //Birrueta 2150
     nameTextField.text = @"Wow, si jala";
+    
+    //notification
+    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:10]];
+
 }
 
 #pragma mark - Name And Type View
@@ -167,6 +171,22 @@ int durationUpperLimit = 31;
     NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
     [hourFormat setDateFormat:@"hh:mm aa"];
     firstHourLabel.text = [hourFormat stringFromDate:myDate];
+}
+
+
+#pragma mark - Notification.
+-(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate{
+    
+    UILocalNotification *notification = [UILocalNotification new];
+    [notification setAlertBody:@"It's Time to Take Your Medicnie"];
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
+    notification.repeatInterval =NSWeekCalendarUnit;
+    notification.fireDate = myFireDate;
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    return notification;
 }
 
 

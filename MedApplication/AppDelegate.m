@@ -25,9 +25,23 @@
     /*This allows to connect the storyboard with the */
     //MainMenuVC *vc = [[MainMenuVC alloc] init];
     //[self.window setRootViewController:vc];
+    NSNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if(localNotification){
+        NSLog(@"Recieved Notification %@",localNotification);
+    }
+    
     
     return YES;
 }
+
+//notification
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    // Handle the notificaton when the app is running
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine" message:@"Pildora" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Pospose", nil];
+    [alert show];
+
+}
+///
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
