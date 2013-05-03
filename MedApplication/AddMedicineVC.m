@@ -21,6 +21,17 @@
 @synthesize quantityTextField;
 @synthesize frecuencyTextField;
 @synthesize durationTextField;
+@synthesize datePicker;
+
+int quantity = 1;
+int frecuency = 1;
+int duration = 1;
+int quantityLowerLimit = 1;
+int quantityUpperLimit = 15;
+int frecuencyLowerLimit = 1;
+int frecuencyUpperLimit = 24;
+int durationLowerLimit = 1;
+int durationUpperLimit = 31;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -29,6 +40,7 @@
     NSString *conteo = [NSString stringWithFormat:@"Medicine count: %d",tempData.count];
     NSLog(@"%@",conteo);
     //Birrueta 2150
+    nameTextField.text = @"Wow, si jala";
 }
 
 #pragma mark - Name And Type View
@@ -69,6 +81,54 @@
     [self slideView:secondView direction:YES];
 }
 
+- (IBAction)increaseQuantity:(id)sender {
+    quantity = [quantityTextField.text intValue];
+    if (quantity < quantityUpperLimit) {
+        quantity++;
+    }
+    quantityTextField.text = [NSString stringWithFormat:@"%d",quantity];
+}
+
+- (IBAction)decreaseQuantity:(id)sender {
+    quantity = [quantityTextField.text intValue];
+    if (quantity > quantityLowerLimit) {
+        quantity--;
+    }
+    quantityTextField.text = [NSString stringWithFormat:@"%d",quantity];
+}
+
+- (IBAction)increaseFrecuency:(id)sender {
+    frecuency = [frecuencyTextField.text intValue];
+    if (frecuency < frecuencyUpperLimit) {
+        frecuency++;
+    }
+    frecuencyTextField.text = [NSString stringWithFormat:@"%d",frecuency];
+}
+
+- (IBAction)decreaseFrecuency:(id)sender {
+    frecuency = [frecuencyTextField.text intValue];
+    if (frecuency > frecuencyLowerLimit) {
+        frecuency--;
+    }
+    frecuencyTextField.text = [NSString stringWithFormat:@"%d",frecuency];
+}
+
+- (IBAction)increaseDuration:(id)sender {
+    duration = [durationTextField.text intValue];
+    if (duration < durationUpperLimit) {
+        duration++;
+    }
+    durationTextField.text = [NSString stringWithFormat:@"%d",duration];
+}
+
+- (IBAction)decreaseDuration:(id)sender {
+    duration = [durationTextField.text intValue];
+    if (duration > durationLowerLimit) {
+        duration--;
+    }
+    durationTextField.text = [NSString stringWithFormat:@"%d",duration];
+}
+
 #pragma mark - Summary View
 - (IBAction)back3:(id)sender {
     [self slideView:secondView direction:NO];
@@ -84,6 +144,17 @@
     
     [self addMedicine:medicineAttributes];
     [self openNewViewController:@"MainMenu"];
+}
+
+- (IBAction)dateButtonAction:(id)sender {
+    CGRect frame = datePicker.frame;
+    frame.origin.y = 548;
+    datePicker.frame = frame;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    frame.origin.y = 548-216;
+    datePicker.frame = frame;
+    [UIView commitAnimations];
 }
 
 

@@ -25,10 +25,18 @@
 @property (strong, nonatomic) IBOutlet UITextField *durationTextField;
 - (IBAction)back2:(id)sender;
 - (IBAction)next2:(id)sender;
+- (IBAction)increaseQuantity:(id)sender;
+- (IBAction)decreaseQuantity:(id)sender;
+- (IBAction)increaseFrecuency:(id)sender;
+- (IBAction)decreaseFrecuency:(id)sender;
+- (IBAction)increaseDuration:(id)sender;
+- (IBAction)decreaseDuration:(id)sender;
 
 #pragma mark - Summary
 @property (strong, nonatomic) IBOutlet UIView *ThirdView;
 - (IBAction)back3:(id)sender;
 - (IBAction)done:(id)sender;
+- (IBAction)dateButtonAction:(id)sender;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
