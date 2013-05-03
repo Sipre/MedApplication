@@ -22,6 +22,8 @@
 @synthesize frecuencyTextField;
 @synthesize durationTextField;
 @synthesize datePicker;
+@synthesize firstHourLabel;
+@synthesize secondHourLabel;
 
 int quantity = 1;
 int frecuency = 1;
@@ -159,6 +161,16 @@ int durationUpperLimit = 31;
     frame.origin.y = 548-216;
     datePicker.frame = frame;
     [UIView commitAnimations];
+    
+    NSDate *myDate = datePicker.date;
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"cccc, MMM d, hh:mm aa"];
+    NSString *prettyVersion = [dateFormat stringFromDate:myDate];
+    NSLog(@"%@",prettyVersion);
+   
+    NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
+    [hourFormat setDateFormat:@"hh:mm aa"];
+    firstHourLabel.text = [hourFormat stringFromDate:myDate];
 }
 
 
