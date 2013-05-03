@@ -191,8 +191,8 @@
 		CECA874717332B7300FB1F6B /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				CEC30CE3173098090079798B /* AppDelegate.m */,
 				CEC30CE2173098090079798B /* AppDelegate.h */,
+				CEC30CE3173098090079798B /* AppDelegate.m */,
 			);
 			name = AppDelegate;
 			sourceTree = "<group>";
