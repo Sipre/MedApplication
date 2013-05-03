@@ -10,8 +10,6 @@
 
 @interface CoreDataVC : UIViewController
 
-@property NSManagedObjectContext *context;
-
 - (NSArray *)searchMedicine:(NSString *)name;
 - (void)addMedicine: (NSDictionary *)medicine;
 - (void) deleteMedicine:(NSString *)name;

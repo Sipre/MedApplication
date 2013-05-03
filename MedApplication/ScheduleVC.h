@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScheduleCell.h"
+#import "CoreDataVC.h"
 
-@interface ScheduleVC : UIViewController
+@interface ScheduleVC : CoreDataVC
+@property (strong, nonatomic) IBOutlet UITableView *ScheduleTableView;
 
 - (IBAction)back:(id)sender;
 

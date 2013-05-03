@@ -10,13 +10,12 @@
 #import "AppDelegate.h"
 
 @interface CoreDataVC (){
-    
+    NSManagedObjectContext *context;
 }
 @end
 
 @implementation CoreDataVC
 
-@synthesize context;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

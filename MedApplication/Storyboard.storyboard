@@ -280,6 +280,55 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="62" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zgv-MJ-4H2">
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="ScheduleCell" rowHeight="62" id="uie-mg-uSd" customClass="ScheduleCell">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="61"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sir-Tq-8E1">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-P1-1Wu">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QEq-9f-PFQ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="41" id="Sl1-rC-0u1"/>
+                                                        <constraint firstAttribute="width" constant="51" id="dkt-mx-qNC"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="ufZ-P1-1Wu" firstAttribute="leading" secondItem="uie-mg-uSd" secondAttribute="leading" constant="107" id="8Ze-4y-Mtg"/>
+                                            <constraint firstAttribute="trailing" secondItem="QEq-9f-PFQ" secondAttribute="trailing" constant="22" id="HwU-Wh-TMx"/>
+                                            <constraint firstItem="ufZ-P1-1Wu" firstAttribute="baseline" secondItem="Sir-Tq-8E1" secondAttribute="baseline" type="default" id="IZZ-Mr-Thk"/>
+                                            <constraint firstItem="QEq-9f-PFQ" firstAttribute="centerY" secondItem="ufZ-P1-1Wu" secondAttribute="centerY" type="default" id="S8p-c2-Etb"/>
+                                            <constraint firstItem="QEq-9f-PFQ" firstAttribute="top" secondItem="uie-mg-uSd" secondAttribute="top" constant="11" id="SSQ-Xx-Ncx"/>
+                                            <constraint firstItem="Sir-Tq-8E1" firstAttribute="leading" secondItem="uie-mg-uSd" secondAttribute="leading" constant="30" id="iDB-Qv-JV6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="medicineImage" destination="QEq-9f-PFQ" id="Zo2-yH-4Ud"/>
+                                            <outlet property="nameScheduleLabel" destination="ufZ-P1-1Wu" id="D6e-Gr-JK1"/>
+                                            <outlet property="timeScheduleLabel" destination="Sir-Tq-8E1" id="hd5-hi-VsA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="EHN-Uo-htF" id="ktl-qt-mVd"/>
+                                    <outlet property="delegate" destination="EHN-Uo-htF" id="bRz-dR-UPY"/>
+                                </connections>
+                            </tableView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iUS-U5-OKL">
                                 <items>
                                     <navigationItem title="Schedule" id="Rbi-sL-i22">
@@ -294,11 +343,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zgv-MJ-4H2" firstAttribute="top" secondItem="iUS-U5-OKL" secondAttribute="bottom" type="default" id="9Uh-EV-oKB"/>
+                            <constraint firstItem="zgv-MJ-4H2" firstAttribute="bottom" secondItem="vtB-AG-2uH" secondAttribute="bottom" type="default" id="E2A-Fz-zDS"/>
                             <constraint firstItem="iUS-U5-OKL" firstAttribute="trailing" secondItem="vtB-AG-2uH" secondAttribute="trailing" type="default" id="PWp-RX-gnO"/>
+                            <constraint firstItem="zgv-MJ-4H2" firstAttribute="trailing" secondItem="vtB-AG-2uH" secondAttribute="trailing" type="default" id="YCC-5V-1qP"/>
                             <constraint firstItem="iUS-U5-OKL" firstAttribute="top" secondItem="vtB-AG-2uH" secondAttribute="top" type="default" id="eFq-YI-j7w"/>
                             <constraint firstItem="iUS-U5-OKL" firstAttribute="leading" secondItem="vtB-AG-2uH" secondAttribute="leading" type="default" id="erp-oW-L9c"/>
+                            <constraint firstItem="zgv-MJ-4H2" firstAttribute="leading" secondItem="vtB-AG-2uH" secondAttribute="leading" type="default" id="zfF-JU-ci2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ScheduleTableView" destination="zgv-MJ-4H2" id="WBO-8o-z3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8RU-QA-7TJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
