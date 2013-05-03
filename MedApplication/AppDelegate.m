@@ -39,6 +39,7 @@
     // Handle the notificaton when the app is running
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine" message:@"Pildora" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Pospose", nil];
     [alert show];
+
 }
 ///
 
