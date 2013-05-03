@@ -38,5 +38,7 @@
 - (IBAction)done:(id)sender;
 - (IBAction)dateButtonAction:(id)sender;
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UILabel *firstHourLabel;
+@property (strong, nonatomic) IBOutlet UILabel *secondHourLabel;
 
 @end
