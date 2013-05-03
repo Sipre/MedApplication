@@ -15,7 +15,9 @@
 @end
 
 
-@implementation MedicineListVC
+@implementation MedicineListVC{
+    NSArray *medicineList;
+}
 
 @synthesize medicineTableView;
 
@@ -24,12 +26,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    //CoreDataVC *siii = [CoreDataVC new];
-    [self searchMedicine:@"*"];
-    
+    medicineList = [NSArray new];
+    medicineList = [self searchMedicine:@"*"];
 
-    
-    //[self searchMedicine:@"*"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +53,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [self searchMedicine:@"*"].count;
+
 }
 
 
@@ -62,18 +62,15 @@
 {
     MedicineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"medicineCell"];
     
-    cell.medicineNameLabel.text = @"Medicine";
-    
-    //cell.image.image = [UIImage imageNamed:[images objectAtIndex:indexPath.row]];
+    cell.medicineNameLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
     
     return cell;
 }
 
-//Esta funcion se ejecuta cuando el usuario selecciona una celda de nuestra tableview
+//this method is used when the user select a cell in the "tableview"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-    
     
     //[tableView beginUpdates];
     //[tableView reloadData];
