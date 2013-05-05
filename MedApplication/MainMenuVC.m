@@ -20,6 +20,7 @@
 	// Do any additional setup after loading the view.
     // Sipre 21.46
     //sipre 21.47;
+    //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
 }
 
 #pragma mark - Button Actions Methods
@@ -39,7 +40,7 @@
     [self openNewViewController:@"Schedule"];
 }
 
-#pragma mark - Another Methods
+#pragma mark - User Defined Methods
 
 - (void) openNewViewController:(NSString*) ViewControllerIndentifier{
     //Opens the View Controller with identifier passed by the parameter

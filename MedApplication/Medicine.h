@@ -13,5 +13,9 @@
 @property (nonatomic, strong) NSString *quantity;
 @property (nonatomic, strong) NSString *frecuency;
 @property (nonatomic, strong) NSString *duration;
+@property (nonatomic, strong) NSString *image;
+@property (nonatomic, strong) NSString *doseUnit;
+@property (nonatomic, strong) NSString *remainingDoses;
+@property (nonatomic, strong) NSDate *startDate;
 
 @end
