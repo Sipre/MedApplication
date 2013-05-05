@@ -31,6 +31,7 @@
 		CEC30D0117309E600079798B /* ScheduleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30D0017309E600079798B /* ScheduleVC.m */; };
 		CEC30D051730A1AE0079798B /* AddMedicineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC30D041730A1AE0079798B /* AddMedicineVC.m */; };
 		CECA874C17332E1B00FB1F6B /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA874B17332E1B00FB1F6B /* ScheduleCell.m */; };
+		CECDB4B01736E98100207BFD /* OpenningAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECDB4AF1736E98100207BFD /* OpenningAppVC.m */; };
 		CED4B7B717362D3C00862632 /* SplashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = CED4B7B617362D3C00862632 /* SplashScreen.png */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,8 @@
 		CEC30D041730A1AE0079798B /* AddMedicineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMedicineVC.m; sourceTree = "<group>"; };
 		CECA874A17332E1B00FB1F6B /* ScheduleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCell.h; sourceTree = "<group>"; };
 		CECA874B17332E1B00FB1F6B /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
+		CECDB4AE1736E98100207BFD /* OpenningAppVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAppVC.h; sourceTree = "<group>"; };
+		CECDB4AF1736E98100207BFD /* OpenningAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenningAppVC.m; sourceTree = "<group>"; };
 		CED4B7B617362D3C00862632 /* SplashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +160,7 @@
 				CECA874917332B9000FB1F6B /* StoryBoard */,
 				CECA874717332B7300FB1F6B /* AppDelegate */,
 				CE648C641731F3F1006D9C98 /* Core Data */,
+				CECDB4AC1736E92400207BFD /* OpenningAppVC */,
 				CEC30CF5173098940079798B /* Main Menu */,
 				CEC30D021730A18B0079798B /* Add Medicine */,
 				CEC30CFA17309C490079798B /* Medicine List */,
@@ -242,6 +246,15 @@
 			name = StoryBoard;
 			sourceTree = "<group>";
 		};
+		CECDB4AC1736E92400207BFD /* OpenningAppVC */ = {
+			isa = PBXGroup;
+			children = (
+				CECDB4AE1736E98100207BFD /* OpenningAppVC.h */,
+				CECDB4AF1736E98100207BFD /* OpenningAppVC.m */,
+			);
+			name = OpenningAppVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -324,6 +337,7 @@
 				CEBD9FEF17349BDB0042EEFE /* Cell.m in Sources */,
 				CEBD9FF417349C590042EEFE /* ProgressCell.m in Sources */,
 				CEBD9FF717349FCC0042EEFE /* medicineTableController.m in Sources */,
+				CECDB4B01736E98100207BFD /* OpenningAppVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

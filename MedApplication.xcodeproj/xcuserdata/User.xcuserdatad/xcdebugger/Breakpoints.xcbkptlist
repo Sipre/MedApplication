@@ -8,13 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedApplication/MainMenuVC.m"
-         timestampString = "389428136.942859"
+         timestampString = "389475262.072473"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
-         landmarkName = "-schedule:"
-         landmarkType = "5">
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "@implementation MainMenuVC"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
