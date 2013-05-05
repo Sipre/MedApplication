@@ -12,16 +12,44 @@
 
 @end
 
-@implementation MainMenuVC
+@implementation MainMenuVC {
+    UIImageView *firstSplash;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    // Sipre 21.46
-    //sipre 21.47;
+    
+    //Create SlashScreen
+    firstSplash = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashScreen.png"]];
+    firstSplash.alpha = 1.0;
+    [self.view addSubview:firstSplash];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        firstSplash.alpha = 1.0;
+        
+    } completion:^(BOOL finished) {
+        [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(finishSplash:) userInfo:nil repeats:NO];
+    }]; //create schedule for the SplashScreen
+
+    
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
+   
+
 }
+
+#pragma mark - Hide SplashScreen
+-(void)finishSplash:(NSTimer *)timer {
+    // hide image
+    // Delete image 
+    [UIView animateWithDuration:.5 animations:^{
+        firstSplash.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [firstSplash removeFromSuperview];
+    }];
+}
+
 
 #pragma mark - Button Actions Methods
 
