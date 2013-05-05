@@ -40,5 +40,9 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (strong, nonatomic) IBOutlet UILabel *firstHourLabel;
 @property (strong, nonatomic) IBOutlet UILabel *secondHourLabel;
+@property (strong, nonatomic) IBOutlet UITextField *startDateTextField;
+@property (strong, nonatomic) IBOutlet UITextField *firstDoseTextField;
+@property (strong, nonatomic) IBOutlet UITextField *secondDoseTextField;
+@property (strong, nonatomic) IBOutlet UITextField *thirdDosetextField;
 
 @end

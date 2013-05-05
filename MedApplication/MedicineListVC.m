@@ -20,15 +20,26 @@
 }
 
 @synthesize medicineTableView;
+@synthesize progressBar;
 
+@synthesize secondView;
+@synthesize navigationBar;
+
+@synthesize attributesController;
+@synthesize attributesTableView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    /*Second table view init*/
+    attributesController = [[medicineTableController alloc] init];
+    attributesTableView.delegate = attributesController;
+    attributesTableView.dataSource = attributesController;
+    attributesController.view = attributesController.tableView;
+    
+    /*Core data search*/
     medicineList = [NSArray new];
-    medicineList = [self searchMedicine:@"*"];
-
+    medicineList = [self searchMedicine:@"*"];    
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +55,7 @@
 
 - (IBAction)rightNavButton:(id)sender { //next
     NSLog(@"Right Button");
-
+    [self openNewViewController:@"AddMedicine"];
 }
 
 
@@ -70,19 +81,44 @@
 //this method is used when the user select a cell in the "tableview"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-    
+    //[tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+
     //[tableView beginUpdates];
     //[tableView reloadData];
     //[tableView endUpdates];
+    //[navigationBar setTitle:[[medicineList objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
+    [navigationBar setTitle:nameSelected];
+    NSLog(@"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]);
+    [self slideView:secondView direction:NO];
+    [progressBar setProgress:0.75];
 }
 
-#pragma mark - Another Methods
+
+- (IBAction)back2:(id)sender {
+    [self slideView:secondView direction:YES];
+}
+
+- (IBAction)edit:(id)sender {
+}
+
+#pragma mark - User Defined Methods
 
 - (void) openNewViewController:(NSString*) ViewControllerIndentifier{
     //Opens the View Controller with identifier passed by the parameter
     UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:ViewControllerIndentifier];
     [self presentViewController:newViewController animated:YES completion:nil];
+}
+
+- (void)slideView:(UIView*)view direction:(BOOL)isLeftToRight {
+    CGRect frame = view.frame;
+    frame.origin.x = (isLeftToRight) ? 0 : 320;
+    view.frame = frame;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    frame.origin.x = (isLeftToRight) ? 320 : 0;
+    view.frame = frame;
+    [UIView commitAnimations];
 }
 
 @end

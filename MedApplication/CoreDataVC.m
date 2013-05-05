@@ -47,6 +47,10 @@
     [newMedicine setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
     [newMedicine setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
     [newMedicine setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
+    [newMedicine setValue:[medicine valueForKey:@"image"] forKey:@"image"];
+    [newMedicine setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
+    [newMedicine setValue:[medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
+    [newMedicine setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];
     
     NSError *error;
     [context save:&error];
