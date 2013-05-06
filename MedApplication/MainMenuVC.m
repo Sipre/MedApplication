@@ -8,20 +8,23 @@
 
 #import "MainMenuVC.h"
 
+
 @interface MainMenuVC ()
 
 @end
 
-@implementation MainMenuVC
+@implementation MainMenuVC {
+    UIImageView *firstSplash ;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    // Sipre 21.46
-    //sipre 21.47;
+         
     //[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]]];
 }
+
 
 #pragma mark - Button Actions Methods
 
