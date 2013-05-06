@@ -117,6 +117,8 @@
 		CEBD9FF117349C0B0042EEFE /* Custom cells */ = {
 			isa = PBXGroup;
 			children = (
+				CE648C3E1731A63C006D9C98 /* MedicineCell.h */,
+				CE648C3F1731A63C006D9C98 /* MedicineCell.m */,
 				CEBD9FED17349BDB0042EEFE /* Cell.h */,
 				CEBD9FEE17349BDB0042EEFE /* Cell.m */,
 				CEBD9FF217349C590042EEFE /* ProgressCell.h */,
@@ -201,8 +203,6 @@
 				CEBD9FF117349C0B0042EEFE /* Custom cells */,
 				CEC30CFB17309C7C0079798B /* MedicineListVC.h */,
 				CEC30CFC17309C7C0079798B /* MedicineListVC.m */,
-				CE648C3E1731A63C006D9C98 /* MedicineCell.h */,
-				CE648C3F1731A63C006D9C98 /* MedicineCell.m */,
 				CEBD9FF517349FCB0042EEFE /* medicineTableController.h */,
 				CEBD9FF617349FCB0042EEFE /* medicineTableController.m */,
 			);

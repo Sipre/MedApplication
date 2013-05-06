@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProgressCell.h"
+#import "Cell.h"
+#import "MedicineCell.h"
 
 @interface medicineTableController : UITableViewController
 
+@property (strong, nonatomic) NSMutableDictionary *medicineAttributes;
+
+-(void) reloadMyData;
 @end

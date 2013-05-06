@@ -13,6 +13,8 @@
 
 @interface MedicineListVC : CoreDataVC  
 
+@property (strong, nonatomic) NSArray *medicineList;
+
 # pragma mark - Table View
 @property (strong, nonatomic) IBOutlet UIView *firstView;
 - (IBAction)back:(id)sender;

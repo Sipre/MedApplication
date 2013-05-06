@@ -16,8 +16,10 @@
 
 
 @implementation MedicineListVC{
-    NSArray *medicineList;
+    //NSArray *medicineList;
 }
+
+@synthesize medicineList;
 
 @synthesize medicineTableView;
 @synthesize progressBar;
@@ -32,6 +34,7 @@
 {
     [super viewDidLoad];
     /*Second table view init*/
+    
     attributesController = [[medicineTableController alloc] init];
     attributesTableView.delegate = attributesController;
     attributesTableView.dataSource = attributesController;
@@ -65,14 +68,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self searchMedicine:@"*"].count;
-
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MedicineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"medicineCell"];
-    
     cell.medicineNameLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
     
     return cell;
@@ -87,11 +88,21 @@
     //[tableView reloadData];
     //[tableView endUpdates];
     //[navigationBar setTitle:[[medicineList objectAtIndex:indexPath.row] objectForKey:@"name"]];
+    
     NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
+    
+    attributesController.medicineAttributes = [NSMutableDictionary new];
+    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
+    
+    NSLog(@"%d", attributesController.medicineAttributes.count);
+    //[attributesController.tableView reloadData]; //Reloads the cells with the data of the selected medicine
+    
+    [[attributesController tableView] reloadData];
+    
     NSLog(@"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]);
+    
     [self slideView:secondView direction:NO];
-    [progressBar setProgress:0.75];
 }
 
 
@@ -119,6 +130,26 @@
     frame.origin.x = (isLeftToRight) ? 320 : 0;
     view.frame = frame;
     [UIView commitAnimations];
+}
+
+# pragma mark - User Defined Methods
+
+- (NSMutableDictionary *) getSelectedMedicineAttributes: (int) selectedRow{
+    /*Returns an NSMutableDictionary with the attributes of the selected cell*/
+    NSMutableDictionary *medicineAttributes = [[NSMutableDictionary alloc] init];
+    
+    [[medicineList objectAtIndex:0] valueForKey:@"name"];
+    
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"name"] forKey:@"name"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"frecuency"] forKey:@"frecuency"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"quantity"] forKey:@"quantity"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"duration"] forKey:@"duration"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"image"] forKey:@"imge"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"doseUnit"] forKey:@"doseUnit"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
+    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"startDate"] forKey:@"startDate"];
+    
+    return medicineAttributes;
 }
 
 @end
