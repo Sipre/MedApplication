@@ -62,6 +62,8 @@ int durationUpperLimit = 31;
     
     //notification
     //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:10]];
+   
+    
 }
 
 #pragma mark - Name And Type View
@@ -157,9 +159,15 @@ int durationUpperLimit = 31;
 }
 
 - (IBAction)done:(id)sender {
+    
     NSMutableDictionary *medicineAttributes = [[NSMutableDictionary alloc] init];
     
-    NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
+    NSString *remainingDoses = [NSString stringWithFormat:@"%d", ((24000/frecuency)*duration)/1000];
+    NSLog(@"RemainingDoses: %@",remainingDoses);
+    
+    //NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
+    
+    NSDate *nextDose = startDate;
     
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
@@ -169,9 +177,12 @@ int durationUpperLimit = 31;
     [medicineAttributes setValue:@"defaultUnits"           forKey:@"doseUnit"];
     [medicineAttributes setValue:remainingDoses            forKey:@"remainingDoses"];
     [medicineAttributes setValue:startDate                 forKey:@"startDate"];
+    [medicineAttributes setValue:nextDose                  forKey:@"nextDose"];
     
     [self addMedicine:medicineAttributes];
-    [self CreateLocalNotification:startDate];
+    //[self CreateLocalNotification:startDate];
+     [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
+    //[self CreateLocalNotification:nextDose];
     [self openNewViewController:@"MedicineList"];
 }
 
@@ -228,18 +239,23 @@ int durationUpperLimit = 31;
     startDateTextField.text = newDateString;
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
     [dateFormatter setDateFormat:@"hh"];
     NSString *hourString = [dateFormatter stringFromDate:newDate];
     int hour = [hourString intValue];
+    
     [dateFormatter setDateFormat:@"yyyy"];
     NSString *yearString = [dateFormatter stringFromDate:newDate];
     int year = [yearString intValue];
+    
     [dateFormatter setDateFormat:@"dd"];
     NSString *dayString = [dateFormatter stringFromDate:newDate];
     int day = [dayString intValue];
+    
     [dateFormatter setDateFormat:@"MM"];
     NSString *monthString = [dateFormatter stringFromDate:newDate];
     int month = [monthString intValue];
+    
     [dateFormatter setDateFormat:@"mm"];
     NSString *minuteString = [dateFormatter stringFromDate:newDate];
     int minute = [minuteString intValue];
@@ -306,7 +322,7 @@ int durationUpperLimit = 31;
     NSDate *customDate = [gregorian dateFromComponents:comps];
     [datePicker setDate:customDate];
     
-    [dateFormatter setDateFormat:@"cccc, MMM d"];
+    [dateFormatter setDateFormat:@"cccc, MMM d"]; //day of the week, Month,#day.
     startDateTextField.text = [dateFormatter stringFromDate:customDate];
     /*Fill the dose text fields*/
     
@@ -326,7 +342,7 @@ int durationUpperLimit = 31;
     
     UILocalNotification *notification = [UILocalNotification new];
     //[notification setAlertBody:@"It's Time to Take Your Medicnie"];
-    [notification setAlertBody:[NSString stringWithFormat:@"It's time to take %@",nameTextField.text]];
+    [notification setAlertBody:[NSString stringWithFormat:@"%@",nameTextField.text]]; //localized string key to show an alert
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
     notification.repeatInterval = NSWeekCalendarUnit;

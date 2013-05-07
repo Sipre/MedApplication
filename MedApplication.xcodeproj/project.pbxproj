@@ -117,8 +117,6 @@
 		CEBD9FF117349C0B0042EEFE /* Custom cells */ = {
 			isa = PBXGroup;
 			children = (
-				CE648C3E1731A63C006D9C98 /* MedicineCell.h */,
-				CE648C3F1731A63C006D9C98 /* MedicineCell.m */,
 				CEBD9FED17349BDB0042EEFE /* Cell.h */,
 				CEBD9FEE17349BDB0042EEFE /* Cell.m */,
 				CEBD9FF217349C590042EEFE /* ProgressCell.h */,
@@ -200,11 +198,12 @@
 		CEC30CFA17309C490079798B /* Medicine List */ = {
 			isa = PBXGroup;
 			children = (
-				CEBD9FF117349C0B0042EEFE /* Custom cells */,
 				CEC30CFB17309C7C0079798B /* MedicineListVC.h */,
 				CEC30CFC17309C7C0079798B /* MedicineListVC.m */,
+				CECD30431738840500ADBFCD /* Custom CELL */,
 				CEBD9FF517349FCB0042EEFE /* medicineTableController.h */,
 				CEBD9FF617349FCB0042EEFE /* medicineTableController.m */,
+				CEBD9FF117349C0B0042EEFE /* Custom cells */,
 			);
 			name = "Medicine List";
 			sourceTree = "<group>";
@@ -244,6 +243,15 @@
 				CEC30CF3173098320079798B /* Storyboard.storyboard */,
 			);
 			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		CECD30431738840500ADBFCD /* Custom CELL */ = {
+			isa = PBXGroup;
+			children = (
+				CE648C3E1731A63C006D9C98 /* MedicineCell.h */,
+				CE648C3F1731A63C006D9C98 /* MedicineCell.m */,
+			);
+			name = "Custom CELL";
 			sourceTree = "<group>";
 		};
 		CECDB4AC1736E92400207BFD /* OpenningAppVC */ = {

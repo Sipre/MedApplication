@@ -40,6 +40,7 @@
     attributesTableView.dataSource = attributesController;
     attributesController.view = attributesController.tableView;
     
+    
     /*Core data search*/
     medicineList = [NSArray new];
     medicineList = [self searchMedicine:@"*"];    
@@ -64,7 +65,6 @@
 
 #pragma mark - TableView Cell
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self searchMedicine:@"*"].count;
@@ -84,6 +84,8 @@
 {
     NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
+    
+  
     
     attributesController.medicineAttributes = [NSMutableDictionary new];
     
@@ -128,14 +130,16 @@
     
     [[medicineList objectAtIndex:0] valueForKey:@"name"];
     
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"name"] forKey:@"name"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"frecuency"] forKey:@"frecuency"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"quantity"] forKey:@"quantity"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"duration"] forKey:@"duration"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"image"] forKey:@"imge"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"doseUnit"] forKey:@"doseUnit"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
-    [medicineAttributes setValue: [[medicineList objectAtIndex:selectedRow] valueForKey:@"startDate"] forKey:@"startDate"];
+    NSManagedObject *medicine = [medicineList objectAtIndex:selectedRow];
+    
+    [medicineAttributes setValue: [medicine valueForKey:@"name"]        forKey:@"name"];
+    [medicineAttributes setValue: [medicine valueForKey:@"frecuency"]   forKey:@"frecuency"];
+    [medicineAttributes setValue: [medicine valueForKey:@"quantity"]    forKey:@"quantity"];
+    [medicineAttributes setValue: [medicine valueForKey:@"duration"]    forKey:@"duration"];
+    [medicineAttributes setValue: [medicine valueForKey:@"image"]       forKey:@"imge"];
+    [medicineAttributes setValue: [medicine valueForKey:@"doseUnit"]    forKey:@"doseUnit"];
+    [medicineAttributes setValue: [medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
+    [medicineAttributes setValue: [medicine valueForKey:@"startDate"]   forKey:@"startDate"];
     
     return medicineAttributes;
 }

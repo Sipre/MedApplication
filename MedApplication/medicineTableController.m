@@ -19,10 +19,16 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"Cargo .....");
+    [self reloadMyData];
+    
 }
 
 #pragma mark - User Defined Methods
 
+- (void)reloadMyData{
+   // [tableView reloadData];
+}
 
 #pragma mark - Table view data source
 

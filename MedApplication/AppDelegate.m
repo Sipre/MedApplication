@@ -7,9 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "MainMenuVC.h"
 
-@implementation AppDelegate
+
+@implementation AppDelegate {
+    
+}
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
@@ -17,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+     [super viewDidLoad];
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
@@ -37,9 +40,84 @@
 //notification
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     // Handle the notificaton when the app is running
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine" message:@"Pildora" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Pospose", nil];
+  //NSLog(@"check 1");
+    //Get ManageObject of Entitie
+    NSManagedObject *medicine = [[self searchMedicine:notif.alertBody] objectAtIndex:0]; //notif Medicine
+    
+//Back up -- entitie
+    //NSLog(@"Medicine name is : %@",[medicine valueForKey:@"name"]);
+    NSMutableDictionary *backUp = [[NSMutableDictionary alloc] init];
+    [backUp setValue:[medicine valueForKey:@"name"]     forKey:@"name"];
+    [backUp setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
+    [backUp setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
+    [backUp setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
+    [backUp setValue:[medicine valueForKey:@"image"]    forKey:@"image"];
+    [backUp setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
+    [backUp setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];    
+
+//reload data --
+     NSLog(@"check 2");
+    NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
+    [backUp setValue:newRemainingDoses forKey:@"remainingDoses"]; //NSLog(@"rem DOSES: %@",[medicine valueForKey:@"remainingDoses"]); //NSLog(@"rem DOSES: %@",newRemainingDoses);
+    
+    //Date for the next Dose
+    NSDate *newNextDose = [[NSDate alloc] initWithTimeInterval:(3600*[[medicine valueForKey:@"frecuency"] intValue]) sinceDate:[medicine valueForKey:@"nextDose"]];
+    [backUp setValue:newNextDose forKey:@"nextDose"];
+    
+//Delete medicine --
+     //NSLog(@"pre: %d",[self searchMedicine:@"*"].count);
+    [self deleteMedicine:notif.alertBody];
+     //NSLog(@"pos: %d",[self searchMedicine:@"*"].count);
+    
+//ADD the reloaded medicine :D
+    NSLog(@"name of: %@",[medicine valueForKey:@"name"]);
+    [self addMedicine:backUp];
+    
+
+     NSLog(@"check 3");
+    
+//Create the new Notification
+    [self CreateLocalNotification:newNextDose withString:[medicine valueForKey:@"name"]]; //check
+
+    
+    //delete medicine ---
+      //[objmedicine setValue:[medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Remind Me In 5 minutes",@"Skip Dose", @"Ok",nil];
     [alert show];
 
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    
+    if (buttonIndex == 0){
+        NSLog(@"Remind Me in 5 Minutes pressed");
+        [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5*60] withString:alertView.message];
+        
+    }else if (buttonIndex == 1){
+        NSLog(@"Skip Dose");
+        
+    }else if(buttonIndex==2){
+        
+        NSLog(@"Ok Pressed");//remindingDose--
+        
+    }
+    
+}
+
+-(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate withString:(NSString *) namePill{
+    
+    UILocalNotification *notification = [UILocalNotification new];
+    [notification setAlertBody:[NSString stringWithFormat: @"%@",namePill ]];
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.userInfo = [NSDictionary dictionaryWithObject:namePill forKey:@"alarm"];
+    notification.repeatInterval =NO;
+    notification.fireDate = myFireDate;
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    return notification;
 }
 ///
 

@@ -11,6 +11,7 @@
 
 @interface CoreDataVC (){
     NSManagedObjectContext *context;
+    AppDelegate *appdelegate;
 }
 @end
 
@@ -30,7 +31,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    AppDelegate *appdelegate = [[UIApplication sharedApplication] delegate];
+    appdelegate = [[UIApplication sharedApplication] delegate];
     context = [appdelegate managedObjectContext];
 }
 
