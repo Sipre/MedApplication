@@ -39,12 +39,6 @@
     // Handle the notificaton when the app is running
   //NSLog(@"check 1");
 
-     NSLog(@"check 3");
-    
-//Create the new Notification
-    //[self CreateLocalNotification:newNextDose withString:[medicine valueForKey:@"name"]]; //check
-
-
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Remind Me In 5 minutes",@"Skip Dose", @"Ok",nil];
     [alert show];
