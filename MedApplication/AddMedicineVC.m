@@ -169,10 +169,6 @@ int durationUpperLimit = 31;
     
     NSDate *nextDose = startDate;
     
-    NSLog(@"Ahora      : %@",[[NSDate date] description]);
-    NSLog(@"startDate  : %@",[startDate description]);
-    NSLog(@"nextDose   : %@",[nextDose description]);
-    
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
     [medicineAttributes setValue:frecuencyTextField.text   forKey:@"frecuency"];
@@ -349,7 +345,7 @@ int durationUpperLimit = 31;
     [notification setAlertBody:[NSString stringWithFormat:@"%@",nameTextField.text]]; //localized string key to show an alert
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
-    notification.repeatInterval = NO;
+    notification.repeatInterval = NSWeekCalendarUnit;
     notification.fireDate = myFireDate;
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];

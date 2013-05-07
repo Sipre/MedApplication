@@ -17,6 +17,5 @@
 @property (nonatomic, strong) NSString *doseUnit;
 @property (nonatomic, strong) NSString *remainingDoses;
 @property (nonatomic, strong) NSDate *startDate;
-@property (nonatomic, strong) NSDate *nextDose;
 
 @end

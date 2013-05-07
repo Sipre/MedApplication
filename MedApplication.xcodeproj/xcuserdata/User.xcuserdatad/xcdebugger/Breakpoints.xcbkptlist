@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedApplication/medicineTableController.m"
-         timestampString = "389584390.391415"
+         timestampString = "389597821.804902"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

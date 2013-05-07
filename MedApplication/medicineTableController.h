@@ -15,5 +15,4 @@
 
 @property (strong, nonatomic) NSMutableDictionary *medicineAttributes;
 
--(void) reloadMyData;
 @end
