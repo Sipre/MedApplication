@@ -52,6 +52,7 @@
     [newMedicine setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
     [newMedicine setValue:[medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
     [newMedicine setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];
+    [newMedicine setValue:[medicine valueForKey:@"nextDose"] forKey:@"nextDose"];
     
     NSError *error;
     [context save:&error];
