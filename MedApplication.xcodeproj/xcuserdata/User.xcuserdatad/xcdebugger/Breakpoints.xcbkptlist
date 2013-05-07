@@ -8,25 +8,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedApplication/MainMenuVC.m"
-         timestampString = "389475262.072473"
+         timestampString = "389285735.041888"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
          landmarkName = "@implementation MainMenuVC"
          landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "MedApplication/AddMedicineVC.m"
+         timestampString = "389575478.397627"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "167"
+         endingLineNumber = "167"
+         landmarkName = "-done:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedApplication/MedicineListVC.m"
-         timestampString = "389315338.07829"
+         filePath = "MedApplication/AddMedicineVC.m"
+         timestampString = "389575113.022207"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
+         landmarkName = "-done:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
