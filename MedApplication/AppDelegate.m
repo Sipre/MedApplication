@@ -79,10 +79,6 @@
 //Create the new Notification
     [self CreateLocalNotification:newNextDose withString:[medicine valueForKey:@"name"]]; //check
 
-    
-    //delete medicine ---
-      //[objmedicine setValue:[medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
-
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Remind Me In 5 minutes",@"Skip Dose", @"Ok",nil];
     [alert show];
 
