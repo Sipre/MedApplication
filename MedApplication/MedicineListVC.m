@@ -88,11 +88,10 @@
   
     
     attributesController.medicineAttributes = [NSMutableDictionary new];
-    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
-   
+    
     [attributesTableView reloadData];
-    [[attributesController tableView] reloadData];
-    [attributesController.tableView reloadData];
+    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
+        
     [self slideView:secondView direction:NO];
 }
 
