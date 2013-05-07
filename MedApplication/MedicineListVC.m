@@ -86,10 +86,10 @@
     [navigationBar setTitle:nameSelected];
     
     attributesController.medicineAttributes = [NSMutableDictionary new];
-    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
     
-    [[attributesController tableView] reloadData];
-    [attributesController.tableView reloadData];
+    [attributesTableView reloadData];
+    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
+        
     [self slideView:secondView direction:NO];
 }
 

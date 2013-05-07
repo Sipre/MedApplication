@@ -23,23 +23,11 @@
 
 #pragma mark - User Defined Methods
 
-- (void)reloadMyData{
-//    [tableView reloadData];
-}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    int sections;
-    if (medicineAttributes.count == 0){
-        NSLog(@"No hay secciones");
-        sections = 0;
-    }
-    else{
-        sections = 3;
-        NSLog(@"Hay 3 secciones");
-    }
-    return sections;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -50,7 +38,6 @@
     /*Returns the cell that will be insert in the tableView*/
     /*The type of cell depends on the section of the indexPath*/
 
-    NSLog(@"Se creó la celda # %d",indexPath.section);
     Cell *cell;
     
     switch (indexPath.section) {
@@ -77,7 +64,6 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSLog(@"Título de sección %d",section);
     NSString *sectionName;
     switch (section)
     {
@@ -100,7 +86,6 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView reloadData];
 }
 
 @end
