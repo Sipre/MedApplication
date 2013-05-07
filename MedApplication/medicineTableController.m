@@ -48,7 +48,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     /*Returns the cell that will be insert in the tableView*/
     /*The type of cell depends on the section of the indexPath*/
-    NSLog(@"Se creó la celda # %d",indexPath.section);
 
     Cell *cell;
     ProgressCell *progressCell;

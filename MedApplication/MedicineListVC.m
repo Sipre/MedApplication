@@ -73,8 +73,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Se creó la celda # %d",indexPath.section);
-
     MedicineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"medicineCell"];
     cell.medicineNameLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
 
@@ -84,7 +82,6 @@
 //this method is used when the user select a cell in the "tableview"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
     
