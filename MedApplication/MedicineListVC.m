@@ -85,13 +85,9 @@
     NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
     
-  
-    
     attributesController.medicineAttributes = [NSMutableDictionary new];
-    
-    [attributesTableView reloadData];
     attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
-        
+    [attributesTableView reloadData];
     [self slideView:secondView direction:NO];
 }
 
@@ -140,6 +136,8 @@
     [medicineAttributes setValue: [medicine valueForKey:@"doseUnit"]    forKey:@"doseUnit"];
     [medicineAttributes setValue: [medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
     [medicineAttributes setValue: [medicine valueForKey:@"startDate"]   forKey:@"startDate"];
+    [medicineAttributes setValue: [medicine valueForKey:@"nextDose"]   forKey:@"nextDose"];
+
     
     return medicineAttributes;
 }

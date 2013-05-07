@@ -3,6 +3,7 @@
     <entity name="Medicine" syncable="YES">
         <attribute name="doseUnit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fdfdfd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="frecuency" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -12,6 +13,6 @@
         <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Medicine" positionX="160" positionY="192" width="128" height="180"/>
+        <element name="Medicine" positionX="160" positionY="192" width="128" height="195"/>
     </elements>
 </model>
