@@ -24,7 +24,7 @@
 #pragma mark - User Defined Methods
 
 - (void)reloadMyData{
-    [self.tableView reloadData];
+//    [tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -33,7 +33,7 @@
     int sections;
     if (medicineAttributes.count == 0){
         NSLog(@"No hay secciones");
-        sections = 3;
+        sections = 0;
     }
     else{
         sections = 3;
@@ -50,7 +50,7 @@
     /*Returns the cell that will be insert in the tableView*/
     /*The type of cell depends on the section of the indexPath*/
 
-    NSLog(@"Celda # %d",indexPath.section);
+    NSLog(@"Se creó la celda # %d",indexPath.section);
     Cell *cell;
     
     switch (indexPath.section) {
@@ -82,7 +82,7 @@
     switch (section)
     {
         case 0:
-            sectionName = @"Quantity";//NSLocalizedString(@"Quantity", @"Quantity");
+            sectionName = @"Quantity";
             break;
         case 1:
             sectionName = @"Frecuency";

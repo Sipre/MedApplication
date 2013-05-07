@@ -75,33 +75,21 @@
 {
     MedicineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"medicineCell"];
     cell.medicineNameLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
-    
+
     return cell;
 }
 
 //this method is used when the user select a cell in the "tableview"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //[tableView deselectRowAtIndexPath:indexPath animated:TRUE];
-
-    //[tableView beginUpdates];
-    //[tableView reloadData];
-    //[tableView endUpdates];
-    //[navigationBar setTitle:[[medicineList objectAtIndex:indexPath.row] objectForKey:@"name"]];
-    
     NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
     
     attributesController.medicineAttributes = [NSMutableDictionary new];
     attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
     
-    NSLog(@"%d", attributesController.medicineAttributes.count);
-    //[attributesController.tableView reloadData]; //Reloads the cells with the data of the selected medicine
-    
     [[attributesController tableView] reloadData];
-    
-    NSLog(@"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]);
-    
+    [attributesController.tableView reloadData];
     [self slideView:secondView direction:NO];
 }
 
