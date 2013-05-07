@@ -19,12 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-     [super viewDidLoad];
+    [super viewDidLoad];
     //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
     //[self.window makeKeyAndVisible];
-
+    
     NSNotification *localNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
     if(localNotification){
         NSLog(@"Recieved Notification %@",localNotification);
@@ -37,12 +37,12 @@
 //notification
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     // Handle the notificaton when the app is running
-  //NSLog(@"check 1");
-
-
+    //NSLog(@"check 1");
+    
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Remind Me In 5 minutes",@"Skip Dose", @"Ok",nil];
     [alert show];
-
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -50,7 +50,7 @@
     
     if (buttonIndex == 0){
         NSLog(@"Remind Me in 5 Minutes pressed");
-    [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5] withString:alertView.message];
+        [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5] withString:alertView.message];
         
     }else if (buttonIndex == 1){
         NSLog(@"Skip Dose");
@@ -59,13 +59,13 @@
         
         NSLog(@"Ok Pressed");//remindingDose--
         NSManagedObject *medicine = [[self searchMedicine:alertView.message] objectAtIndex:0]; //notif Medicine
-
+        
         NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
-       
+        
         if ([newRemainingDoses intValue] >= 0) {
-       
+            
             //Get ManageObject of Entitie
-                   
+            
             //Back up -- entitie
             //NSLog(@"Medicine name is : %@",[medicine valueForKey:@"name"]);
             NSMutableDictionary *backUp = [[NSMutableDictionary alloc] init];
@@ -114,7 +114,7 @@
     UILocalNotification *notification = [UILocalNotification new];
     [notification setAlertBody:[NSString stringWithFormat: @"%@",nameMessage ]];
     notification.timeZone = [NSTimeZone defaultTimeZone];
-     NSLog(@"check 4.1");
+    NSLog(@"check 4.1");
     notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
      NSLog(@"check 4.2");
     notification.repeatInterval = NO;
@@ -134,7 +134,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -160,11 +160,11 @@
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
-        } 
+        }
     }
 }
 
@@ -214,7 +214,7 @@
         /*
          Replace this implementation with code to handle the error appropriately.
          
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
          
          Typical reasons for an error here include:
          * The persistent store is not accessible;
@@ -236,7 +236,7 @@
          */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
-    }    
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -250,3 +250,4 @@
 }
 
 @end
+

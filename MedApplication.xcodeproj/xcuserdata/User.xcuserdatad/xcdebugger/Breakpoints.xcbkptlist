@@ -33,13 +33,13 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "MedApplication/AddMedicineVC.m"
-         timestampString = "389575113.022207"
+         filePath = "MedApplication/medicineTableController.m"
+         timestampString = "389597821.804902"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "161"
-         endingLineNumber = "161"
-         landmarkName = "-done:"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
