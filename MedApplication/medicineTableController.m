@@ -19,12 +19,15 @@
 {
     [super viewDidLoad];
     
+    NSLog(@"Cargo .....");
+    [self reloadMyData];
+    
 }
 
 #pragma mark - User Defined Methods
 
 - (void)reloadMyData{
-//    [tableView reloadData];
+   // [tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -33,7 +36,7 @@
     int sections;
     if (medicineAttributes.count == 0){
         NSLog(@"No hay secciones");
-        sections = 0;
+        sections = 3;
     }
     else{
         sections = 3;
