@@ -4,28 +4,15 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "MedApplication/MainMenuVC.m"
-         timestampString = "389285735.041888"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "40"
-         endingLineNumber = "40"
-         landmarkName = "@implementation MainMenuVC"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "MedApplication/AddMedicineVC.m"
-         timestampString = "389575478.397627"
+         timestampString = "389737782.053623"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
          landmarkName = "-done:"
          landmarkType = "5">
       </FileBreakpoint>

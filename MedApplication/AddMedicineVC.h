@@ -36,10 +36,9 @@
 @property (strong, nonatomic) IBOutlet UIView *ThirdView;
 - (IBAction)back3:(id)sender;
 - (IBAction)done:(id)sender;
-- (IBAction)dateButtonAction:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (strong, nonatomic) IBOutlet UILabel *firstHourLabel;
-@property (strong, nonatomic) IBOutlet UILabel *secondHourLabel;
+
 @property (strong, nonatomic) IBOutlet UITextField *startDateTextField;
 @property (strong, nonatomic) IBOutlet UITextField *firstDoseTextField;
 @property (strong, nonatomic) IBOutlet UITextField *secondDoseTextField;

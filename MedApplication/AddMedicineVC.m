@@ -23,8 +23,6 @@
 @synthesize frecuencyTextField;
 @synthesize durationTextField;
 @synthesize datePicker;
-@synthesize firstHourLabel;
-@synthesize secondHourLabel;
 @synthesize startDateTextField;
 @synthesize firstDoseTextField;
 @synthesize secondDoseTextField;
@@ -35,7 +33,12 @@
 int quantity = 1;
 int frecuency = 1;
 int duration = 1;
+
+NSString *selectedMedicineType;
+NSString *selectedDoseUnit;
+
 NSDate *startDate;
+NSDate *nextDose;
 
 int quantityLowerLimit = 1;
 int quantityUpperLimit = 15;
@@ -60,9 +63,9 @@ int durationUpperLimit = 31;
     secondDoseTextField.enabled = NO;
     thirdDosetextField.enabled = NO;
     
-    //notification
-    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:10]];
-   
+    [firstView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+    [secondView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+    [ThirdView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
     
 }
 
@@ -167,7 +170,7 @@ int durationUpperLimit = 31;
     
     //NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
     
-    NSDate *nextDose = startDate;
+    nextDose = startDate;
     
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
@@ -182,107 +185,45 @@ int durationUpperLimit = 31;
     [self addMedicine:medicineAttributes];
     //[self CreateLocalNotification:startDate];
      [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
-    //[self CreateLocalNotification:nextDose];
+    //[self CreateLocalNotification:nextDose]; //real
     [self openNewViewController:@"MedicineList"];
 }
 
-- (IBAction)dateButtonAction:(id)sender {
-    /*
-    CGRect frame = datePicker.frame;
-    frame.origin.y = 548;
-    datePicker.frame = frame;
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    frame.origin.y = 548-216;
-    datePicker.frame = frame;
-    [UIView commitAnimations];
-    */
-    NSDate *myDate = datePicker.date;
-    startDate = datePicker.date;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    //[dateFormat setDateFormat:@"cccc, MMM d, hh:mm aa"];
-    [dateFormat setDateFormat:@"cccc, MMM d"];
-    NSString *prettyVersion = [dateFormat stringFromDate:myDate];
-    NSLog(@"%@",prettyVersion);
-   
-    NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
-    [hourFormat setDateFormat:@"hh:mm aa"];
-
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:6];
-    [comps setMonth:5];
-    [comps setYear:2004];
-    [comps setHour:9];
-    [comps setMinute:0];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *date = [gregorian dateFromComponents:comps];
-
-    
-    firstHourLabel.text = [hourFormat stringFromDate:myDate];
-    secondHourLabel.text = [hourFormat stringFromDate:date];
-    startDateTextField.text = prettyVersion;
-    //- (void)setDate:(NSDate *)date animated:(BOOL)animated
-    datePicker.minimumDate = datePicker.date;
-    [datePicker setDate:date animated:NO];
-}
 
 - (void) refreshDate{
     /*Method used to refresh the date of the startDateTextField*/
     NSDate *newDate = datePicker.date;
     startDate = datePicker.date;
     
+    //NSLog(@"C: %@",[[NSDate date] description]);
+    //NSLog(@"C: %@",[datePicker.minimumDate description]);
+    //NSLog(@"C: %@",[datePicker.date description]);
+    //NSLog(@"C: %@",[startDate description]);
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    
     [dateFormat setDateFormat:@"cccc, MMM d"];
     NSString *newDateString = [dateFormat stringFromDate:newDate];
     startDateTextField.text = newDateString;
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDate *customDate =newDate;
     
-    [dateFormatter setDateFormat:@"hh"];
-    NSString *hourString = [dateFormatter stringFromDate:newDate];
-    int hour = [hourString intValue];
+     /*Fill the dose text fields*/
     
-    [dateFormatter setDateFormat:@"yyyy"];
-    NSString *yearString = [dateFormatter stringFromDate:newDate];
-    int year = [yearString intValue];
+    [dateFormat setDateFormat:@"cccc, MMM d"]; //day of the week, Month,#day.
+    startDateTextField.text = [dateFormat stringFromDate:customDate];
     
-    [dateFormatter setDateFormat:@"dd"];
-    NSString *dayString = [dateFormatter stringFromDate:newDate];
-    int day = [dayString intValue];
+    [dateFormat setDateFormat:@"hh:mm aa"];
+    NSString *time = [dateFormat stringFromDate:customDate];
+    firstDoseTextField.text = time;
     
-    [dateFormatter setDateFormat:@"MM"];
-    NSString *monthString = [dateFormatter stringFromDate:newDate];
-    int month = [monthString intValue];
+    customDate =[NSDate dateWithTimeInterval:3600*frecuency sinceDate:newDate];    
+    time = [dateFormat stringFromDate:customDate];
+    secondDoseTextField.text = time;
     
-    [dateFormatter setDateFormat:@"mm"];
-    NSString *minuteString = [dateFormatter stringFromDate:newDate];
-    int minute = [minuteString intValue];
-    
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:day];
-    [comps setMonth:month];
-    [comps setYear:year];
-    [comps setHour:hour];
-    [comps setMinute:minute];
-    
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *customDate = [gregorian dateFromComponents:comps];
-
-    [dateFormatter setDateFormat:@"cccc, MMM d"];
-    startDateTextField.text = [dateFormatter stringFromDate:customDate];
-    /*Fill the dose text fields*/
-    [dateFormatter setDateFormat:@"hh:mm aa"];
-    firstDoseTextField.text = [dateFormatter stringFromDate:customDate];
-    [comps setHour:hour+frecuency];
-    customDate = [gregorian dateFromComponents:comps];
-    secondDoseTextField.text = [dateFormatter stringFromDate:customDate];
-    [comps setHour:hour+2*frecuency];
-    customDate = [gregorian dateFromComponents:comps];
-    thirdDosetextField.text = [dateFormatter stringFromDate:customDate];
-
+    customDate = [NSDate dateWithTimeInterval:3600*frecuency sinceDate:customDate];
+    time = [dateFormat stringFromDate:customDate];
+    thirdDosetextField.text = time;
     
 }
 
@@ -292,49 +233,59 @@ int durationUpperLimit = 31;
      Sets the minimum date of the picker to the current hour
      Changes the date of the picker to the next hour with 0 minuntes
      */
+
     [datePicker addTarget:self action:@selector(refreshDate) forControlEvents:UIControlEventValueChanged];
-    datePicker.minimumDate = datePicker.date;
+    datePicker.minimumDate = [NSDate date];//datePicker.date;
+    datePicker.date = [NSDate date];
+    
+    //NSLog(@"A: %@",[[NSDate date] description]);
+    //NSLog(@"A: %@",[datePicker.minimumDate description]);
+    //NSLog(@"A: %@",[datePicker.date description]);
+    //NSLog(@"A: %@",[startDate description]);
     
     NSDate *today = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"hh"];
-    NSString *hourString = [dateFormatter stringFromDate:today];
-    int hour = [hourString intValue];
-    [dateFormatter setDateFormat:@"yyyy"];
-    NSString *yearString = [dateFormatter stringFromDate:today];
-    int year = [yearString intValue];
-    [dateFormatter setDateFormat:@"dd"];
-    NSString *dayString = [dateFormatter stringFromDate:today];
-    int day = [dayString intValue];
-    [dateFormatter setDateFormat:@"MM"];
-    NSString *monthString = [dateFormatter stringFromDate:today];
-    int month = [monthString intValue];
-
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:day];
-    [comps setMonth:month];
-    [comps setYear:year];
-    [comps setHour:hour+1];
-    [comps setMinute:0];
     
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *customDate = [gregorian dateFromComponents:comps];
-    [datePicker setDate:customDate];
+    [dateFormatter setDateFormat:@"mm"];
+    NSString *minString = [dateFormatter stringFromDate:today];
+    int min = [minString intValue];
+    int minInSec = min*60;
+    
+    [dateFormatter setDateFormat:@"ss"];
+    NSString *secString = [dateFormatter stringFromDate:today];
+    int sec = [secString intValue];
+    
+    int LessInterval= minInSec+sec;
+    
+    [dateFormatter setDateFormat:@"aa"];
+    
+
+    datePicker.date = today;
+    [datePicker setDate:datePicker.date];
+    startDate = datePicker.date;
+    
+    //NSLog(@"B: %@",[customDate description]);
+    //NSLog(@"B: %@",[datePicker.date description]);
+    //NSLog(@"B: %@",[startDate description]);
+    
+    NSDate *customDate =[NSDate dateWithTimeInterval:3600-LessInterval sinceDate:today];
     
     [dateFormatter setDateFormat:@"cccc, MMM d"]; //day of the week, Month,#day.
     startDateTextField.text = [dateFormatter stringFromDate:customDate];
+   
     /*Fill the dose text fields*/
-    
     [dateFormatter setDateFormat:@"hh:mm aa"];
-    firstDoseTextField.text = [dateFormatter stringFromDate:customDate];
-    [comps setHour:hour+1+frecuency];
-    customDate = [gregorian dateFromComponents:comps];
-    secondDoseTextField.text = [dateFormatter stringFromDate:customDate];
-    [comps setHour:hour+1+2*frecuency];
-    customDate = [gregorian dateFromComponents:comps];
-    startDate = customDate;
-    thirdDosetextField.text = [dateFormatter stringFromDate:customDate];
+    
+    NSString *time = [dateFormatter stringFromDate:customDate];
+    firstDoseTextField.text = time;
+    
+    customDate = [NSDate dateWithTimeInterval:3600*frecuency sinceDate:customDate];
+    time = [dateFormatter stringFromDate:customDate];
+    secondDoseTextField.text = time;
+    
+    customDate = [NSDate dateWithTimeInterval:3600*frecuency sinceDate:customDate];
+     time = [dateFormatter stringFromDate:customDate];
+    thirdDosetextField.text = time;
 }
 
 #pragma mark - Notification
