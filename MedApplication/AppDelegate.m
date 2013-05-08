@@ -58,54 +58,59 @@
     }else if(buttonIndex==2){
         
         NSLog(@"Ok Pressed");//remindingDose--
-        NSManagedObject *medicine = [[self searchMedicine:alertView.message] objectAtIndex:0]; //notif Medicine
-        
-        NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
-        
-        if ([newRemainingDoses intValue] >= 0) {
-            
-            //Get ManageObject of Entitie
-            
-            //Back up -- entitie
-            //NSLog(@"Medicine name is : %@",[medicine valueForKey:@"name"]);
-            NSMutableDictionary *backUp = [[NSMutableDictionary alloc] init];
-            [backUp setValue:[medicine valueForKey:@"name"]     forKey:@"name"];
-            [backUp setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
-            [backUp setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
-            [backUp setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
-            [backUp setValue:[medicine valueForKey:@"image"]    forKey:@"image"];
-            [backUp setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
-            [backUp setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];
-            
-            //reload data --
-            NSLog(@"check 2");
-            //NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
-            [backUp setValue:newRemainingDoses forKey:@"remainingDoses"]; //NSLog(@"rem DOSES: %@",[medicine valueForKey:@"remainingDoses"]); //NSLog(@"rem DOSES: %@",newRemainingDoses);
-            
-            //Date for the next Dose
-            NSDate *newNextDose = [[NSDate alloc] initWithTimeInterval:(3600*[[medicine valueForKey:@"frecuency"] intValue]) sinceDate:[medicine valueForKey:@"nextDose"]];
-            [backUp setValue:newNextDose forKey:@"nextDose"];
-            
-            NSLog(@"Ahora      : %@",[[NSDate date] description]);
-            NSLog(@"nextDose   : %@",[[medicine valueForKey:@"nextDose"] description]);
-            NSLog(@"newNextDose: %@",[newNextDose description]);
-            
-            //Delete medicine --
-            //NSLog(@"pre: %d",[self searchMedicine:@"*"].count);
-            [self deleteMedicine:alertView.message];
-            //NSLog(@"pos: %d",[self searchMedicine:@"*"].count);
-            
-            //ADD the reloaded medicine :D
-            NSLog(@"name of: %@",[medicine valueForKey:@"name"]);
-            [self addMedicine:backUp];
-            
-            NSLog(@"check 3");
-            
-            //Create the new Notification
-            [self CreateLocalNotification:newNextDose withString:alertView.message]; //check
-        }
+        [self reloadEntitieAndNotification:alertView];
+               
     }
     
+}
+
+-(void) reloadEntitieAndNotification:(UIAlertView *)alertView{
+    NSManagedObject *medicine = [[self searchMedicine:alertView.message] objectAtIndex:0]; //notif Medicine
+    
+    NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
+    
+    if ([newRemainingDoses intValue] >= 0) {
+        
+        //Get ManageObject of Entitie
+        
+        //Back up -- entitie
+        //NSLog(@"Medicine name is : %@",[medicine valueForKey:@"name"]);
+        NSMutableDictionary *backUp = [[NSMutableDictionary alloc] init];
+        [backUp setValue:[medicine valueForKey:@"name"]     forKey:@"name"];
+        [backUp setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
+        [backUp setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
+        [backUp setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
+        [backUp setValue:[medicine valueForKey:@"image"]    forKey:@"image"];
+        [backUp setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
+        [backUp setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];
+        
+        //reload data --
+        NSLog(@"check 2");
+        //NSString *newRemainingDoses = [NSString stringWithFormat:@"%d",([[medicine valueForKey:@"remainingDoses"] intValue]-1)]; // = remainingDoses-1
+        [backUp setValue:newRemainingDoses forKey:@"remainingDoses"]; //NSLog(@"rem DOSES: %@",[medicine valueForKey:@"remainingDoses"]); //NSLog(@"rem DOSES: %@",newRemainingDoses);
+        
+        //Date for the next Dose
+        NSDate *newNextDose = [[NSDate alloc] initWithTimeInterval:(3600*[[medicine valueForKey:@"frecuency"] intValue]) sinceDate:[medicine valueForKey:@"nextDose"]];
+        [backUp setValue:newNextDose forKey:@"nextDose"];
+        
+        NSLog(@"Ahora      : %@",[[NSDate date] description]);
+        NSLog(@"nextDose   : %@",[[medicine valueForKey:@"nextDose"] description]);
+        NSLog(@"newNextDose: %@",[newNextDose description]);
+        
+        //Delete medicine --
+        //NSLog(@"pre: %d",[self searchMedicine:@"*"].count);
+        [self deleteMedicine:alertView.message];
+        //NSLog(@"pos: %d",[self searchMedicine:@"*"].count);
+        
+        //ADD the reloaded medicine :D
+        NSLog(@"name of: %@",[medicine valueForKey:@"name"]);
+        [self addMedicine:backUp];
+        
+        NSLog(@"check 3");
+        
+        //Create the new Notification
+        [self CreateLocalNotification:newNextDose withString:alertView.message]; //check
+    }
 }
 
 -(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate withString:(NSString *) nameMessage{
@@ -124,7 +129,7 @@
     NSLog(@"check 5");
     return notification;
 }
-///
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
