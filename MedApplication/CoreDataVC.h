@@ -13,5 +13,7 @@
 - (NSArray *)searchMedicine:(NSString *)name;
 - (void)addMedicine: (NSDictionary *)medicine;
 - (void) deleteMedicine:(NSString *)name;
+- (void)changeValueOfMedicine:(NSString *)withName withValueForKey:(NSObject *)valueForKey forKey:(NSString *)forKey;
+
 
 @end

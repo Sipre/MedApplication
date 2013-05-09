@@ -17,6 +17,7 @@
 
 @implementation MedicineListVC{
     //NSArray *medicineList;
+    NSArray *medicines;
 }
 
 @synthesize medicineList;
@@ -41,9 +42,12 @@
   
     /*Core data search*/
     medicineList = [NSArray new];
-    medicineList = [self searchMedicine:@"*"];    
+    medicineList = [self searchMedicine:@"*"];
+    
+    medicines = [NSArray new];
 
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+    [medicineTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+    [attributesTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
 
 }
 
@@ -95,8 +99,8 @@
     attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
    
     [attributesTableView reloadData];
-    [[attributesController tableView] reloadData];
-    [attributesController.tableView reloadData];
+    //[[attributesController tableView] reloadData];
+    //[attributesController.tableView reloadData];
     [self slideView:secondView direction:NO];
 }
 
@@ -141,10 +145,11 @@
     [medicineAttributes setValue: [medicine valueForKey:@"frecuency"]   forKey:@"frecuency"];
     [medicineAttributes setValue: [medicine valueForKey:@"quantity"]    forKey:@"quantity"];
     [medicineAttributes setValue: [medicine valueForKey:@"duration"]    forKey:@"duration"];
-    [medicineAttributes setValue: [medicine valueForKey:@"image"]       forKey:@"imge"];
+    [medicineAttributes setValue: [medicine valueForKey:@"image"]       forKey:@"image"];
     [medicineAttributes setValue: [medicine valueForKey:@"doseUnit"]    forKey:@"doseUnit"];
     [medicineAttributes setValue: [medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
     [medicineAttributes setValue: [medicine valueForKey:@"startDate"]   forKey:@"startDate"];
+    [medicineAttributes setValue: [medicine valueForKey:@"nextDose"]   forKey:@"nextDose"];
     
     return medicineAttributes;
 }

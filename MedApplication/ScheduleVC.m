@@ -18,14 +18,28 @@
     NSMutableArray *listForSchedule;
 }
 
+@synthesize ScheduleTableView;
+@synthesize secondView;
+@synthesize navigationBar;
+
+@synthesize attributesController;
+@synthesize attributesTableView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    /*Second table view init*/
+    attributesController = [[medicineTableController alloc] init];
+    attributesTableView.delegate = attributesController;
+    attributesTableView.dataSource = attributesController;
+    attributesController.view = attributesController.tableView;
+    
+    /*Core data search*/
     medicineList = [NSArray new];
     medicineList = [self searchMedicine:@"*"];
     listForSchedule = [NSMutableArray new];
-    
     
     for(int i=0;i < medicineList.count; i++){
         
@@ -43,11 +57,16 @@
         NSLog(@"%@ : %@ : %@",nameMed,dayString,[medicineDate description]);
         NSLog(@"%@ : %@ : %@",nameMed,todayString,[today description]);
         
-        
         if([dayString isEqualToString:todayString]){
             //put this medicine in the Schedule. GO
             [listForSchedule addObject:[medicineList objectAtIndex:i]];
-            //[listForSchedule sortUsingComparator:[[listForSchedule objectAtIndex:0] valueForKey:@"nextDose"],[[listForSchedule objectAtIndex:1] valueForKey:@"nextDose"]];
+            
+        }
+    }
+    NSLog(@"para sort");
+    //sort the list, please :D
+    if (listForSchedule.count > 0 ) {
+        for(int y=0; y < listForSchedule.count-1;y++){
             for(int j=0; j < listForSchedule.count-1;j++){
                 int h=j;
                 NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
@@ -58,11 +77,14 @@
                     [listForSchedule exchangeObjectAtIndex:h withObjectAtIndex:--h];
                 }
             }
-            
         }
-        //is the list correctly seted?
-        
     }
+    
+    NSLog(@"viewDone");
+    
+    [ScheduleTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+    [attributesTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+
 }
 
 
@@ -73,18 +95,9 @@
     [self openNewViewController:@"MainMenu"];
 }
 
-#pragma mark - Another Methods
-
-
-- (void) openNewViewController:(NSString*) ViewControllerIndentifier{
-    //Opens the View Controller with identifier passed by the parameter
-    UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:ViewControllerIndentifier];
-    [self presentViewController:newViewController animated:YES completion:nil];
-}
 
 
 #pragma mark - TableView Cell
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -123,12 +136,69 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:TRUE];
     
-    //[tableView beginUpdates];
-    //[tableView reloadData];
-    //[tableView endUpdates];
+    NSString *nameSelected = [NSString stringWithFormat:  @"%@",[[listForSchedule objectAtIndex:indexPath.row ] valueForKey:@"name"]];
+    [navigationBar setTitle:nameSelected];
+    
+    attributesController.medicineAttributes = [NSMutableDictionary new];
+    attributesController.medicineAttributes = [self getSelectedMedicineAttributes:indexPath.row];
+    
+    [attributesTableView reloadData];
+    //[[attributesController tableView] reloadData];
+    //[attributesController.tableView reloadData];
+    [self slideView:secondView direction:NO];
 }
 
 
+
+
+- (IBAction)back2:(id)sender {
+    [self slideView:secondView direction:YES];
+}
+
+- (IBAction)edit:(id)sender {
+}
+
+#pragma mark - User Defined Methods
+
+- (void) openNewViewController:(NSString*) ViewControllerIndentifier{
+    //Opens the View Controller with identifier passed by the parameter
+    UIViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:ViewControllerIndentifier];
+    [self presentViewController:newViewController animated:YES completion:nil];
+}
+
+- (void)slideView:(UIView*)view direction:(BOOL)isLeftToRight {
+    CGRect frame = view.frame;
+    frame.origin.x = (isLeftToRight) ? 0 : 320;
+    view.frame = frame;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.5];
+    frame.origin.x = (isLeftToRight) ? 320 : 0;
+    view.frame = frame;
+    [UIView commitAnimations];
+}
+
+# pragma mark - User Defined Methods
+
+- (NSMutableDictionary *) getSelectedMedicineAttributes: (int) selectedRow{
+    /*Returns an NSMutableDictionary with the attributes of the selected cell*/
+    NSMutableDictionary *medicineAttributes = [[NSMutableDictionary alloc] init];
+    
+    [[listForSchedule objectAtIndex:0] valueForKey:@"name"];
+    
+    NSManagedObject *medicine = [listForSchedule objectAtIndex:selectedRow];
+    
+    [medicineAttributes setValue: [medicine valueForKey:@"name"]        forKey:@"name"];
+    [medicineAttributes setValue: [medicine valueForKey:@"frecuency"]   forKey:@"frecuency"];
+    [medicineAttributes setValue: [medicine valueForKey:@"quantity"]    forKey:@"quantity"];
+    [medicineAttributes setValue: [medicine valueForKey:@"duration"]    forKey:@"duration"];
+    [medicineAttributes setValue: [medicine valueForKey:@"image"]       forKey:@"image"];
+    [medicineAttributes setValue: [medicine valueForKey:@"doseUnit"]    forKey:@"doseUnit"];
+    [medicineAttributes setValue: [medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
+    [medicineAttributes setValue: [medicine valueForKey:@"startDate"]   forKey:@"startDate"];
+    [medicineAttributes setValue: [medicine valueForKey:@"nextDose"]   forKey:@"nextDose"];
+    
+    return medicineAttributes;
+}
 
 
 @end

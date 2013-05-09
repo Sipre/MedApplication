@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MedicineListVC.h"
 
 @interface MainMenuVC : UIViewController
 - (IBAction)add:(id)sender;

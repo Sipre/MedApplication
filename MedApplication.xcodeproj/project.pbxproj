@@ -215,6 +215,7 @@
 				CEC30D021730A18B0079798B /* Add Medicine */,
 				CEC30CFA17309C490079798B /* Medicine List */,
 				CEC30CFE17309DF80079798B /* Schedule */,
+				CEDB042C173B62D6004D134B /* Resume View */,
 				CEC30CDA173098090079798B /* Supporting Files */,
 				CEBEE3D3173182C6008FB021 /* Medicine.h */,
 				CEBEE3D4173182C6008FB021 /* Medicine.m */,
@@ -251,9 +252,6 @@
 				CEC30CFB17309C7C0079798B /* MedicineListVC.h */,
 				CEC30CFC17309C7C0079798B /* MedicineListVC.m */,
 				CECD30431738840500ADBFCD /* Custom CELL */,
-				CEBD9FF517349FCB0042EEFE /* medicineTableController.h */,
-				CEBD9FF617349FCB0042EEFE /* medicineTableController.m */,
-				CEBD9FF117349C0B0042EEFE /* Custom cells */,
 			);
 			name = "Medicine List";
 			sourceTree = "<group>";
@@ -325,6 +323,16 @@
 				CECDB4AF1736E98100207BFD /* OpenningAppVC.m */,
 			);
 			name = OpenningAppVC;
+			sourceTree = "<group>";
+		};
+		CEDB042C173B62D6004D134B /* Resume View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD9FF517349FCB0042EEFE /* medicineTableController.h */,
+				CEBD9FF617349FCB0042EEFE /* medicineTableController.m */,
+				CEBD9FF117349C0B0042EEFE /* Custom cells */,
+			);
+			name = "Resume View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

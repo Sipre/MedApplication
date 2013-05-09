@@ -8,7 +8,11 @@
 
 #import "medicineTableController.h"
 
-@interface medicineTableController ()
+@interface medicineTableController (){
+    int countNextDose;
+    NSDateFormatter *dateFormat;
+    NSDate *customDate;
+}
 
 @end
 
@@ -18,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    countNextDose = 0;
 
 }
 
@@ -52,11 +57,7 @@
             //Image Cell
             imageCell = [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
             NSString *imageName = [NSString stringWithFormat:@"%@.png",[medicineAttributes objectForKey:@"image"]];
-            if (medicineAttributes.count == 0 ) {
-                imageName = @"Pill.png";
-            }
 
-            NSLog(@"%@",imageName);
             [imageCell.medicineImage setImage:[UIImage imageNamed:imageName]];
             return imageCell;
             break;
@@ -93,7 +94,17 @@
         case 5:
             //Next doses dates
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-            cell.label.text = @"nextDoseTime";
+            
+            dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"cccc, MMM d   -   hh:mm aa"];
+            customDate =[NSDate dateWithTimeInterval:(3600*countNextDose)*[[medicineAttributes objectForKey:@"frecuency"] intValue] sinceDate:[medicineAttributes objectForKey:@"nextDose"]];
+
+            cell.label.text =[NSString stringWithFormat:@"%@",[dateFormat stringFromDate:customDate]];
+            
+            if (++countNextDose > 2) {
+                countNextDose = 0;
+            }
+            
             return cell;
             break;
         case 6:

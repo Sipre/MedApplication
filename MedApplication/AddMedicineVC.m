@@ -207,6 +207,7 @@ int durationUpperLimit = 31;
     NSLog(@"RemainingDoses: %@",remainingDoses);
     
     //NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
+    NSLog(@"tipo 2: %@",selectedMedicineType);
     
     NSDate *nextDose = startDate;
     
@@ -222,8 +223,8 @@ int durationUpperLimit = 31;
     
     [self addMedicine:medicineAttributes];
     //[self CreateLocalNotification:startDate];
-     [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
-    //[self CreateLocalNotification:nextDose];
+    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
+    [self CreateLocalNotification:nextDose];
     [self openNewViewController:@"MedicineList"];
 }
 
@@ -357,7 +358,7 @@ int durationUpperLimit = 31;
         //When moves the type medicine component
         [medicineImage setImage:[UIImage imageNamed: [NSString stringWithFormat:@"%@.png",[medicineType objectAtIndex:row]]]];
         selectedMedicineType = [medicineType objectAtIndex:row];
-        NSLog(@"%@",selectedMedicineType);
+        NSLog(@"tipo: %@",selectedMedicineType);
     }
     else if (component == 1){
         //Whwn moves the dose unit

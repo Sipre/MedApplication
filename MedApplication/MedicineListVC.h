@@ -32,4 +32,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *attributesTableView;
 @property (strong, nonatomic) medicineTableController *attributesController;
 
+
 @end

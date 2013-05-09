@@ -43,20 +43,44 @@
     NSManagedObject *newMedicine = [[NSManagedObject alloc] initWithEntity:entityDesc insertIntoManagedObjectContext:context];
     
     NSLog(@"%@",[medicine valueForKey:@"name"]);
+    NSLog(@"la imagen es: %@",[medicine valueForKey:@"nextDose"]);
     
-    [newMedicine setValue:[medicine valueForKey:@"name"] forKey:@"name"];
-    [newMedicine setValue:[medicine valueForKey:@"quantity"] forKey:@"quantity"];
-    [newMedicine setValue:[medicine valueForKey:@"frecuency"] forKey:@"frecuency"];
-    [newMedicine setValue:[medicine valueForKey:@"duration"] forKey:@"duration"];
-    [newMedicine setValue:[medicine valueForKey:@"image"] forKey:@"image"];
-    [newMedicine setValue:[medicine valueForKey:@"doseUnit"] forKey:@"doseUnit"];
+    [newMedicine setValue:[medicine valueForKey:@"name"]        forKey:@"name"];
+    [newMedicine setValue:[medicine valueForKey:@"quantity"]    forKey:@"quantity"];
+    [newMedicine setValue:[medicine valueForKey:@"frecuency"]   forKey:@"frecuency"];
+    [newMedicine setValue:[medicine valueForKey:@"duration"]    forKey:@"duration"];
+    [newMedicine setValue:[medicine valueForKey:@"image"]       forKey:@"image"];
+    [newMedicine setValue:[medicine valueForKey:@"doseUnit"]    forKey:@"doseUnit"];
     [newMedicine setValue:[medicine valueForKey:@"remainingDoses"] forKey:@"remainingDoses"];
-    [newMedicine setValue:[medicine valueForKey:@"startDate"] forKey:@"startDate"];
-    [newMedicine setValue:[medicine valueForKey:@"nextDose"] forKey:@"nextDose"];
+    [newMedicine setValue:[medicine valueForKey:@"startDate"]   forKey:@"startDate"];
+    [newMedicine setValue:[medicine valueForKey:@"nextDose"]    forKey:@"nextDose"];
     
     NSError *error;
     [context save:&error];
     NSLog(@"Added medicine");
+}
+
+
+- (void)changeValueOfMedicine:(NSString *)withName withValueForKey:(NSObject *)valueForKey forKey:(NSString *)forKey{
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Medicine" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest new];
+    [request setEntity:entityDesc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name like %@",withName];
+    [request setPredicate:predicate];
+    NSError *error;
+    NSArray *matchingData = [context executeFetchRequest:request error:&error];
+    if(matchingData.count <= 0){
+        NSLog(@"No medicine with name %@ found",withName);
+    }
+    else{
+        for (NSManagedObject *obj in matchingData) {
+            [obj setValue:valueForKey forKey:forKey];
+            [context refreshObject:obj mergeChanges:YES];
+            NSLog(@"Medicine with name %@ changed",withName);
+        }
+        [context save:&error];
+    }
+    NSLog(@"Change medicine");
 }
 
 - (NSArray *)searchMedicine:(NSString *)name{
