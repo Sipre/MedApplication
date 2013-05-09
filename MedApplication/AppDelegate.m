@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  MedApplication
-//
-//  Created by Lalo on 30/04/2013.
-//  Copyright (c) 2013 Lalo. All rights reserved.
-//
-
 #import "AppDelegate.h"
 
 
@@ -113,6 +105,7 @@
     }
 }
 
+
 -(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate withString:(NSString *) nameMessage{
     NSLog(@"check 4");
     
@@ -121,7 +114,7 @@
     notification.timeZone = [NSTimeZone defaultTimeZone];
     NSLog(@"check 4.1");
     notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
-     NSLog(@"check 4.2");
+    NSLog(@"check 4.2");
     notification.repeatInterval = NO;
     notification.fireDate = myFireDate;
     notification.soundName = UILocalNotificationDefaultSoundName;
