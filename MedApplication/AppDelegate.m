@@ -1,3 +1,11 @@
+//
+//  AppDelegate.m
+//  MedApplication
+//
+//  Created by Lalo on 30/04/2013.
+//  Copyright (c) 2013 Lalo. All rights reserved.
+//
+
 #import "AppDelegate.h"
 
 
@@ -51,7 +59,7 @@
         
         NSLog(@"Ok Pressed");//remindingDose--
         [self reloadEntitieAndNotification:alertView];
-               
+        
     }
     
 }
@@ -104,7 +112,6 @@
         [self CreateLocalNotification:newNextDose withString:alertView.message]; //check
     }
 }
-
 
 -(UILocalNotification *) CreateLocalNotification:(NSDate *) myFireDate withString:(NSString *) nameMessage{
     NSLog(@"check 4");

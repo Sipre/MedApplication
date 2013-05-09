@@ -18,28 +18,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"Cargo .....");
-    [self reloadMyData];
-    
+
 }
 
-#pragma mark - User Defined Methods
-
-- (void)reloadMyData{
-   // [tableView reloadData];
-}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 4) {
+    if (section == 5) {
         return 3; //Next Doses Date & Hour
-    }else if (section == 5){
+    }
+    else if (section == 6){
         return 2; //Delete and Suspend Buttons
     }
     return 1;
@@ -54,24 +47,39 @@
     
     switch (indexPath.section) {
         case 0:
+        {
+            ImageCell *imageCell;
+            //Image Cell
+            imageCell = [tableView dequeueReusableCellWithIdentifier:@"imageCell"];
+            NSString *imageName = [NSString stringWithFormat:@"%@.png",[medicineAttributes objectForKey:@"image"]];
+            if (medicineAttributes.count == 0 ) {
+                imageName = @"Pill.png";
+            }
+
+            NSLog(@"%@",imageName);
+            [imageCell.medicineImage setImage:[UIImage imageNamed:imageName]];
+            return imageCell;
+            break;
+        }
+        case 1:
             //Quantity Cell
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.label.text = [NSString stringWithFormat:@"Take %@ %@ per dose",[medicineAttributes objectForKey:@"quantity"],@"pills"];
             return cell;
             break;
-        case 1:
+        case 2:
             //Frecuency Cell
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.label.text = [NSString stringWithFormat:@"Every %@ %@", [medicineAttributes objectForKey:@"frecuency"], @"hours"];
             return cell;
             break;
-        case 2:
+        case 3:
             //Duration cell
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.label.text = [NSString stringWithFormat:@"For %@ %@", [medicineAttributes objectForKey:@"duration"], @"days"];
             return cell;
             break;
-        case 3:
+        case 4:
             //Progress cell
             progressCell = [tableView dequeueReusableCellWithIdentifier:@"progressCell"];
             progressCell.label.text =  [NSString stringWithFormat:@"Remaining doses: %@", [medicineAttributes objectForKey:@"remainingDoses"]];
@@ -82,13 +90,13 @@
             progressCell.progressBar.progress = 1-remainingDoses/(24.0/frecuency*duration);
             return progressCell;
             break;
-        case 4:
+        case 5:
             //Next doses dates
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             cell.label.text = @"nextDoseTime";
             return cell;
             break;
-        case 5:
+        case 6:
             //Suspend and delete buttons
             cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
             if (indexPath.row ==0) {
@@ -108,19 +116,19 @@
     NSString *sectionName;
     switch (section)
     {
-        case 0:
+        case 1:
             sectionName = @"Quantity";
             break;
-        case 1:
+        case 2:
             sectionName = @"Frecuency";
             break;
-        case 2:
+        case 3:
             sectionName = @"Duration";
             break;
-        case 3:
+        case 4:
             sectionName = @"Treatment progress";
             break;
-        case 4:
+        case 5:
             sectionName = @"Next doses dates";
             break;
         default:
@@ -129,8 +137,11 @@
     return sectionName;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 3) {
+    if (indexPath.section == 4) {
         return 78;
+    }
+    else if (indexPath.section == 0){
+        return 160;
     }
     else{
         return 44;

@@ -45,7 +45,7 @@
         
         
         if([dayString isEqualToString:todayString]){
-          //put this medicine in the Schedule. GO
+            //put this medicine in the Schedule. GO
             [listForSchedule addObject:[medicineList objectAtIndex:i]];
             //[listForSchedule sortUsingComparator:[[listForSchedule objectAtIndex:0] valueForKey:@"nextDose"],[[listForSchedule objectAtIndex:1] valueForKey:@"nextDose"]];
             for(int j=0; j < listForSchedule.count-1;j++){
@@ -58,7 +58,7 @@
                     [listForSchedule exchangeObjectAtIndex:h withObjectAtIndex:--h];
                 }
             }
-           
+            
         }
         //is the list correctly seted?
         
@@ -98,7 +98,7 @@
     ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScheduleCell"];
     
     NSManagedObject *medicineForToday = [listForSchedule objectAtIndex:indexPath.row];
-
+    
     cell.nameScheduleLabel.text = [medicineForToday valueForKey:@"name"];
     
     NSDate *todayMedicine = [medicineForToday valueForKey:@"nextDose"];
@@ -106,12 +106,12 @@
     [dateFormat setDateFormat:@"hh:mm aa"];
     
     NSString *timeString = [dateFormat stringFromDate:todayMedicine];
-
+    
     NSString *nameMed = [medicineForToday valueForKey:@"name"];
     NSLog(@"%@ : %@ : %@",nameMed,timeString,[todayMedicine description]);
     cell.timeScheduleLabel.text = timeString;
     
-    NSString *imageName = [NSString stringWithFormat:@"%@.png",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"image"]];
+    NSString *imageName = [NSString stringWithFormat:@"%@.png",[medicineForToday valueForKey:@"image"]];
     
     [cell.medicineImage setImage:[UIImage imageNamed:imageName]];
     

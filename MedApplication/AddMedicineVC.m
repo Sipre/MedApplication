@@ -19,6 +19,10 @@
 @synthesize secondView;
 @synthesize ThirdView;
 @synthesize nameTextField;
+@synthesize doseUnit;
+@synthesize medicineImage;
+@synthesize medicineType;
+@synthesize typePicker;
 @synthesize quantityTextField;
 @synthesize frecuencyTextField;
 @synthesize durationTextField;
@@ -27,6 +31,7 @@
 @synthesize firstDoseTextField;
 @synthesize secondDoseTextField;
 @synthesize thirdDosetextField;
+@synthesize quantityLabel;
 
 #pragma mark - Local Variables
 
@@ -38,7 +43,6 @@ NSString *selectedMedicineType;
 NSString *selectedDoseUnit;
 
 NSDate *startDate;
-NSDate *nextDose;
 
 int quantityLowerLimit = 1;
 int quantityUpperLimit = 15;
@@ -67,6 +71,39 @@ int durationUpperLimit = 31;
     [secondView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
     [ThirdView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
     
+    //Init value of dose unit and type medicine
+    doseUnit = [NSMutableArray new];
+    [doseUnit addObject:@"pills"];
+    [doseUnit addObject:@"ml"];
+    [doseUnit addObject:@"gr"];
+    [doseUnit addObject:@"mg"];
+    [doseUnit addObject:@"drops"];
+    [doseUnit addObject:@"shots"];
+    [doseUnit addObject:@"pieces"];
+    [doseUnit addObject:@"units"];
+    [doseUnit addObject:@"tea spoon"];
+    [doseUnit addObject:@"table spoon"];
+    
+    medicineType = [NSMutableArray new];
+    [medicineType addObject:@"Capsule"];
+    [medicineType addObject:@"Tablet"];
+    [medicineType addObject:@"Pill"];
+    [medicineType addObject:@"Shot"];
+    [medicineType addObject:@"Inhalator"];
+    [medicineType addObject:@"Drops"];
+    [medicineType addObject:@"Inhalator"];
+    [medicineType addObject:@"Syrup"];
+    
+    /*Init the firt selected medicine type, selected dose unit and the first appearing image*/
+    [medicineImage setImage:[UIImage imageNamed:@"Capsule.png"]];
+    quantityLabel.text = [NSString stringWithFormat:@"%@ per dose", [doseUnit objectAtIndex:0]];
+    selectedMedicineType = [medicineType objectAtIndex:0];
+    selectedDoseUnit = [doseUnit objectAtIndex:0];
+    
+    //notification
+    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:10]];
+   
+    
 }
 
 #pragma mark - Name And Type View
@@ -78,6 +115,7 @@ int durationUpperLimit = 31;
 
 - (IBAction)next1:(id)sender {
     NSArray *data = [self searchMedicine:nameTextField.text];
+    quantityLabel.text = [NSString stringWithFormat:@"%@ per dose",selectedDoseUnit]; //Refresh label with format: "dose unit per dose"
     
     if ([self isTextFieldEmpty:nameTextField:@"name" ] == NO){
         if(data.count > 0){
@@ -170,14 +208,14 @@ int durationUpperLimit = 31;
     
     //NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
     
-    nextDose = startDate;
+    NSDate *nextDose = startDate;
     
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
     [medicineAttributes setValue:frecuencyTextField.text   forKey:@"frecuency"];
     [medicineAttributes setValue:durationTextField.text    forKey:@"duration"];
-    [medicineAttributes setValue:@"defaulImage"            forKey:@"image"];
-    [medicineAttributes setValue:@"defaultUnits"           forKey:@"doseUnit"];
+    [medicineAttributes setValue:selectedMedicineType      forKey:@"image"];
+    [medicineAttributes setValue:selectedDoseUnit          forKey:@"doseUnit"];
     [medicineAttributes setValue:remainingDoses            forKey:@"remainingDoses"];
     [medicineAttributes setValue:startDate                 forKey:@"startDate"];
     [medicineAttributes setValue:nextDose                  forKey:@"nextDose"];
@@ -185,12 +223,12 @@ int durationUpperLimit = 31;
     [self addMedicine:medicineAttributes];
     //[self CreateLocalNotification:startDate];
      [self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
-    //[self CreateLocalNotification:nextDose]; //real
+    //[self CreateLocalNotification:nextDose];
     [self openNewViewController:@"MedicineList"];
 }
 
 
-- (void) refreshDate{
+-(void) refreshDate{
     /*Method used to refresh the date of the startDateTextField*/
     NSDate *newDate = datePicker.date;
     startDate = datePicker.date;
@@ -205,10 +243,10 @@ int durationUpperLimit = 31;
     [dateFormat setDateFormat:@"cccc, MMM d"];
     NSString *newDateString = [dateFormat stringFromDate:newDate];
     startDateTextField.text = newDateString;
-
+    
     NSDate *customDate =newDate;
     
-     /*Fill the dose text fields*/
+    /*Fill the dose text fields*/
     
     [dateFormat setDateFormat:@"cccc, MMM d"]; //day of the week, Month,#day.
     startDateTextField.text = [dateFormat stringFromDate:customDate];
@@ -217,7 +255,7 @@ int durationUpperLimit = 31;
     NSString *time = [dateFormat stringFromDate:customDate];
     firstDoseTextField.text = time;
     
-    customDate =[NSDate dateWithTimeInterval:3600*frecuency sinceDate:newDate];    
+    customDate =[NSDate dateWithTimeInterval:3600*frecuency sinceDate:newDate];
     time = [dateFormat stringFromDate:customDate];
     secondDoseTextField.text = time;
     
@@ -233,7 +271,7 @@ int durationUpperLimit = 31;
      Sets the minimum date of the picker to the current hour
      Changes the date of the picker to the next hour with 0 minuntes
      */
-
+    
     [datePicker addTarget:self action:@selector(refreshDate) forControlEvents:UIControlEventValueChanged];
     datePicker.minimumDate = [NSDate date];//datePicker.date;
     datePicker.date = [NSDate date];
@@ -259,7 +297,7 @@ int durationUpperLimit = 31;
     
     [dateFormatter setDateFormat:@"aa"];
     
-
+    
     datePicker.date = today;
     [datePicker setDate:datePicker.date];
     startDate = datePicker.date;
@@ -272,7 +310,7 @@ int durationUpperLimit = 31;
     
     [dateFormatter setDateFormat:@"cccc, MMM d"]; //day of the week, Month,#day.
     startDateTextField.text = [dateFormatter stringFromDate:customDate];
-   
+    
     /*Fill the dose text fields*/
     [dateFormatter setDateFormat:@"hh:mm aa"];
     
@@ -284,8 +322,48 @@ int durationUpperLimit = 31;
     secondDoseTextField.text = time;
     
     customDate = [NSDate dateWithTimeInterval:3600*frecuency sinceDate:customDate];
-     time = [dateFormatter stringFromDate:customDate];
+    time = [dateFormatter stringFromDate:customDate];
     thirdDosetextField.text = time;
+}
+
+
+#pragma mark - Picker Methods
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 2;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    if (component == 0) {
+        return [medicineType count];
+    }
+    else{
+        return [doseUnit count];
+    }
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if (component == 0) {
+        return [medicineType objectAtIndex:row];
+    }
+    else{
+        return [doseUnit objectAtIndex:row];
+    }
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if (component == 0) {
+        //When moves the type medicine component
+        [medicineImage setImage:[UIImage imageNamed: [NSString stringWithFormat:@"%@.png",[medicineType objectAtIndex:row]]]];
+        selectedMedicineType = [medicineType objectAtIndex:row];
+        NSLog(@"%@",selectedMedicineType);
+    }
+    else if (component == 1){
+        //Whwn moves the dose unit
+        selectedDoseUnit = [doseUnit objectAtIndex:row];
+        NSLog(@"%@",selectedDoseUnit);
+    }
 }
 
 #pragma mark - Notification

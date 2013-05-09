@@ -10,6 +10,7 @@
 #import "ProgressCell.h"
 #import "Cell.h"
 #import "MedicineCell.h"
+#import "ImageCell.h"
 
 @interface medicineTableController : UITableViewController
 
