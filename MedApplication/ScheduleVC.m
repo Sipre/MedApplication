@@ -59,6 +59,10 @@
     ScheduleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ScheduleCell"];
     
     cell.nameScheduleLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
+    //Show medicine image
+    NSString *imageName = [NSString stringWithFormat:@"%@.png",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"image"]];
+    
+    [cell.medicineImage setImage:[UIImage imageNamed:imageName]];
     
     return cell;
 }

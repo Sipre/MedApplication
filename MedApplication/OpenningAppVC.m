@@ -32,7 +32,7 @@
 	// Do any additional setup after loading the view.
     
     //Create SlashScreen
-    firstSplash = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashScreen.png"]];
+    firstSplash = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"splashPOT.png"]];
     firstSplash.alpha = 1.0;
     [self.view addSubview:firstSplash];
     
