@@ -111,6 +111,10 @@
     NSLog(@"%@ : %@ : %@",nameMed,timeString,[todayMedicine description]);
     cell.timeScheduleLabel.text = timeString;
     
+    NSString *imageName = [NSString stringWithFormat:@"%@.png",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"image"]];
+    
+    [cell.medicineImage setImage:[UIImage imageNamed:imageName]];
+    
     return cell;
 }
 
