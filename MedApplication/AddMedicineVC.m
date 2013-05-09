@@ -43,6 +43,7 @@ NSString *selectedMedicineType;
 NSString *selectedDoseUnit;
 
 NSDate *startDate;
+NSDate *nextDose;
 
 int quantityLowerLimit = 1;
 int quantityUpperLimit = 15;
@@ -208,7 +209,7 @@ int durationUpperLimit = 31;
     
     //NSString *remainingDoses = [NSString stringWithFormat:@"%d",frecuency*duration];
     
-    NSDate *nextDose = startDate;
+    nextDose = startDate;
     
     [medicineAttributes setValue:nameTextField.text        forKey:@"name"];
     [medicineAttributes setValue:quantityTextField.text    forKey:@"quantity"];
@@ -227,44 +228,6 @@ int durationUpperLimit = 31;
     [self openNewViewController:@"MedicineList"];
 }
 
-- (IBAction)dateButtonAction:(id)sender {
-    /*
-    CGRect frame = datePicker.frame;
-    frame.origin.y = 548;
-    datePicker.frame = frame;
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.5];
-    frame.origin.y = 548-216;
-    datePicker.frame = frame;
-    [UIView commitAnimations];
-    */
-    NSDate *myDate = datePicker.date;
-    startDate = datePicker.date;
-    
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    //[dateFormat setDateFormat:@"cccc, MMM d, hh:mm aa"];
-    [dateFormat setDateFormat:@"cccc, MMM d"];
-    NSString *prettyVersion = [dateFormat stringFromDate:myDate];
-    NSLog(@"%@",prettyVersion);
-   
-    NSDateFormatter *hourFormat = [[NSDateFormatter alloc] init];
-    [hourFormat setDateFormat:@"hh:mm aa"];
-
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:6];
-    [comps setMonth:5];
-    [comps setYear:2004];
-    [comps setHour:9];
-    [comps setMinute:0];
-    NSCalendar *gregorian = [[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDate *date = [gregorian dateFromComponents:comps];
-
-    startDateTextField.text = prettyVersion;
-    //- (void)setDate:(NSDate *)date animated:(BOOL)animated
-    datePicker.minimumDate = datePicker.date;
-    [datePicker setDate:date animated:NO];
-}
 
 -(void) refreshDate{
     /*Method used to refresh the date of the startDateTextField*/
