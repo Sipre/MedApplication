@@ -22,7 +22,6 @@
 @synthesize medicineList;
 
 @synthesize medicineTableView;
-@synthesize progressBar;
 
 @synthesize secondView;
 @synthesize navigationBar;
@@ -39,11 +38,13 @@
     attributesTableView.delegate = attributesController;
     attributesTableView.dataSource = attributesController;
     attributesController.view = attributesController.tableView;
-    
-    
+  
     /*Core data search*/
     medicineList = [NSArray new];
     medicineList = [self searchMedicine:@"*"];    
+
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundPOT.png"]]];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,6 +76,9 @@
 {
     MedicineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"medicineCell"];
     cell.medicineNameLabel.text = [[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"];
+    //Show medicine image
+    NSString *imageName = [NSString stringWithFormat:@"%@.png",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"image"]];
+    [cell.medicineImage setImage:[UIImage imageNamed:imageName]];
 
     return cell;
 }
@@ -82,7 +86,7 @@
 //this method is used when the user select a cell in the "tableview"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *nameSelected = [NSString stringWithFormat: @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
+    NSString *nameSelected = [NSString stringWithFormat:  @"%@",[[medicineList objectAtIndex:indexPath.row ] valueForKey:@"name"]];
     [navigationBar setTitle:nameSelected];
     
   

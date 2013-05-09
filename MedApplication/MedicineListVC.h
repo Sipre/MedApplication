@@ -26,7 +26,7 @@
 - (IBAction)back2:(id)sender;
 - (IBAction)edit:(id)sender;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
-@property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
+
 
 # pragma mark - Second Table View
 @property (strong, nonatomic) IBOutlet UITableView *attributesTableView;
