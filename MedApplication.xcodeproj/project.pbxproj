@@ -47,6 +47,7 @@
 		CEC7AFAB173A1BE800BBE0FC /* Tablet.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC7AFA4173A1BE800BBE0FC /* Tablet.png */; };
 		CECA874C17332E1B00FB1F6B /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA874B17332E1B00FB1F6B /* ScheduleCell.m */; };
 		CECDB4B01736E98100207BFD /* OpenningAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECDB4AF1736E98100207BFD /* OpenningAppVC.m */; };
+		CECE3270173D18AD0033650C /* iconPOT114.png in Resources */ = {isa = PBXBuildFile; fileRef = CECE326F173D18AD0033650C /* iconPOT114.png */; };
 		CECEE837173C88C2007411F0 /* deleteMedicineButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CECEE836173C88C2007411F0 /* deleteMedicineButton.png */; };
 		CED15CF1173CD450003C54DD /* editableParameter.png in Resources */ = {isa = PBXBuildFile; fileRef = CED15CF0173CD450003C54DD /* editableParameter.png */; };
 		CED15CF4173CD456003C54DD /* backgroundEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = CED15CF3173CD456003C54DD /* backgroundEdit.png */; };
@@ -115,6 +116,7 @@
 		CECA874B17332E1B00FB1F6B /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
 		CECDB4AE1736E98100207BFD /* OpenningAppVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAppVC.h; sourceTree = "<group>"; };
 		CECDB4AF1736E98100207BFD /* OpenningAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenningAppVC.m; sourceTree = "<group>"; };
+		CECE326F173D18AD0033650C /* iconPOT114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconPOT114.png; sourceTree = "<group>"; };
 		CECEE836173C88C2007411F0 /* deleteMedicineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteMedicineButton.png; sourceTree = "<group>"; };
 		CED15CF0173CD450003C54DD /* editableParameter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editableParameter.png; sourceTree = "<group>"; };
 		CED15CF3173CD456003C54DD /* backgroundEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundEdit.png; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		CEC30CC2173098090079798B = {
 			isa = PBXGroup;
 			children = (
+				CECE326F173D18AD0033650C /* iconPOT114.png */,
 				CEC30CD9173098090079798B /* MedApplication */,
 				CEC30CD0173098090079798B /* Frameworks */,
 				CEC30CCE173098090079798B /* Products */,
@@ -426,6 +429,7 @@
 				CECEE837173C88C2007411F0 /* deleteMedicineButton.png in Resources */,
 				CED15CF1173CD450003C54DD /* editableParameter.png in Resources */,
 				CED15CF4173CD456003C54DD /* backgroundEdit.png in Resources */,
+				CECE3270173D18AD0033650C /* iconPOT114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

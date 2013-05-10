@@ -315,7 +315,7 @@ int durationUpperLimit = 31;
     
     NSString *time = [dateFormatter stringFromDate:customDate];
     firstDoseTextField.text = time;
-    
+    datePicker.date = customDate;
     customDate = [NSDate dateWithTimeInterval:3600*frecuency sinceDate:customDate];
     time = [dateFormatter stringFromDate:customDate];
     secondDoseTextField.text = time;

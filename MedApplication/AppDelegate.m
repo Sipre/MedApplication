@@ -37,11 +37,14 @@
 //notification
 - (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
     // Handle the notificaton when the app is running
-
-    medicine = [[self searchMedicine:notif.alertBody] objectAtIndex:0]; //notif Medicine
+    NSArray *listMed = [self searchMedicine:notif.alertBody];
+    if (listMed.count >0) {
+        medicine = [listMed objectAtIndex:0]; //notif Medicine
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Skip Dose", @"Ok",nil];
+        [alert show];
+    }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Time to Take your Medicine: " message:notif.alertBody delegate:self cancelButtonTitle:nil otherButtonTitles:@"Skip Dose", @"Ok",nil];
-    [alert show];    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
