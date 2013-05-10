@@ -22,7 +22,6 @@
 # pragma mark - Second View Interface
 @property (strong, nonatomic) IBOutlet UIView *secondView;
 - (IBAction)back2:(id)sender;
-- (IBAction)edit:(id)sender;
 @property (strong, nonatomic) IBOutlet UINavigationItem *navigationBar;
 
 # pragma mark - Second Table View

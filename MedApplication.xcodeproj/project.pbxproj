@@ -47,6 +47,10 @@
 		CEC7AFAB173A1BE800BBE0FC /* Tablet.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC7AFA4173A1BE800BBE0FC /* Tablet.png */; };
 		CECA874C17332E1B00FB1F6B /* ScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CECA874B17332E1B00FB1F6B /* ScheduleCell.m */; };
 		CECDB4B01736E98100207BFD /* OpenningAppVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CECDB4AF1736E98100207BFD /* OpenningAppVC.m */; };
+		CECEE837173C88C2007411F0 /* deleteMedicineButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CECEE836173C88C2007411F0 /* deleteMedicineButton.png */; };
+		CED15CF1173CD450003C54DD /* editableParameter.png in Resources */ = {isa = PBXBuildFile; fileRef = CED15CF0173CD450003C54DD /* editableParameter.png */; };
+		CED15CF4173CD456003C54DD /* backgroundEdit.png in Resources */ = {isa = PBXBuildFile; fileRef = CED15CF3173CD456003C54DD /* backgroundEdit.png */; };
+		CED15CF6173CE485003C54DD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CED15CF5173CE485003C54DD /* QuartzCore.framework */; };
 		CED8A36A1739D03E0046F185 /* minus.png in Resources */ = {isa = PBXBuildFile; fileRef = CED8A3651739D03E0046F185 /* minus.png */; };
 		CED8A36B1739D03E0046F185 /* minusPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = CED8A3661739D03E0046F185 /* minusPressed.png */; };
 		CED8A36C1739D03E0046F185 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = CED8A3671739D03E0046F185 /* plus.png */; };
@@ -111,6 +115,10 @@
 		CECA874B17332E1B00FB1F6B /* ScheduleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCell.m; sourceTree = "<group>"; };
 		CECDB4AE1736E98100207BFD /* OpenningAppVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenningAppVC.h; sourceTree = "<group>"; };
 		CECDB4AF1736E98100207BFD /* OpenningAppVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenningAppVC.m; sourceTree = "<group>"; };
+		CECEE836173C88C2007411F0 /* deleteMedicineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = deleteMedicineButton.png; sourceTree = "<group>"; };
+		CED15CF0173CD450003C54DD /* editableParameter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editableParameter.png; sourceTree = "<group>"; };
+		CED15CF3173CD456003C54DD /* backgroundEdit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundEdit.png; sourceTree = "<group>"; };
+		CED15CF5173CE485003C54DD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CED8A3651739D03E0046F185 /* minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minus.png; sourceTree = "<group>"; };
 		CED8A3661739D03E0046F185 /* minusPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = minusPressed.png; sourceTree = "<group>"; };
 		CED8A3671739D03E0046F185 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
@@ -122,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED15CF6173CE485003C54DD /* QuartzCore.framework in Frameworks */,
 				CEC30CD2173098090079798B /* UIKit.framework in Frameworks */,
 				CEC30CD4173098090079798B /* Foundation.framework in Frameworks */,
 				CEC30CD6173098090079798B /* CoreGraphics.framework in Frameworks */,
@@ -149,8 +158,11 @@
 				CEC716BD1739F4470016BD3C /* addButtonPOT.png */,
 				CEC716BE1739F4470016BD3C /* backgroundPOT.png */,
 				CEC716BF1739F4470016BD3C /* listButtonPOT.png */,
+				CED15CF0173CD450003C54DD /* editableParameter.png */,
 				CEC716C01739F4470016BD3C /* menu.png */,
+				CECEE836173C88C2007411F0 /* deleteMedicineButton.png */,
 				CEC716C11739F4470016BD3C /* scheduleButtonPOT.png */,
+				CED15CF3173CD456003C54DD /* backgroundEdit.png */,
 				CEC716C21739F4470016BD3C /* splashPOT.png */,
 				CEC716B01739D9480016BD3C /* deleteButton.png */,
 				CEC716B41739D9480016BD3C /* suspendButton.png */,
@@ -195,6 +207,7 @@
 		CEC30CD0173098090079798B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CED15CF5173CE485003C54DD /* QuartzCore.framework */,
 				CEC30CD1173098090079798B /* UIKit.framework */,
 				CEC30CD3173098090079798B /* Foundation.framework */,
 				CEC30CD5173098090079798B /* CoreGraphics.framework */,
@@ -410,6 +423,9 @@
 				CEC7AFA9173A1BE800BBE0FC /* Shot.png in Resources */,
 				CEC7AFAA173A1BE800BBE0FC /* Pill.png in Resources */,
 				CEC7AFAB173A1BE800BBE0FC /* Tablet.png in Resources */,
+				CECEE837173C88C2007411F0 /* deleteMedicineButton.png in Resources */,
+				CED15CF1173CD450003C54DD /* editableParameter.png in Resources */,
+				CED15CF4173CD456003C54DD /* backgroundEdit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

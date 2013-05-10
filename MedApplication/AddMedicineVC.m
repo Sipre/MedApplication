@@ -102,8 +102,6 @@ int durationUpperLimit = 31;
     
     //notification
     //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:10]];
-   
-    
 }
 
 #pragma mark - Name And Type View
@@ -222,9 +220,9 @@ int durationUpperLimit = 31;
     [medicineAttributes setValue:nextDose                  forKey:@"nextDose"];
     
     [self addMedicine:medicineAttributes];
-    //[self CreateLocalNotification:startDate];
-    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // tests
+    //[self CreateLocalNotification:[NSDate dateWithTimeIntervalSinceNow:5]]; // testsz
     [self CreateLocalNotification:nextDose];
+    //[self DeleteLocalNotification:nextDose];
     [self openNewViewController:@"MedicineList"];
 }
 
@@ -375,10 +373,25 @@ int durationUpperLimit = 31;
     [notification setAlertBody:[NSString stringWithFormat:@"%@",nameTextField.text]]; //localized string key to show an alert
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
-    notification.repeatInterval = NSWeekCalendarUnit;
+    notification.repeatInterval = NO;
     notification.fireDate = myFireDate;
     notification.soundName = UILocalNotificationDefaultSoundName;
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    return notification;
+}
+
+- (UILocalNotification *) DeleteLocalNotification:(NSDate *) myFireDate{
+    
+    UILocalNotification *notification = [UILocalNotification new];
+    //[notification setAlertBody:@"It's Time to Take Your Medicnie"];
+    [notification setAlertBody:[NSString stringWithFormat:@"%@",nameTextField.text]]; //localized string key to show an alert
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.userInfo = [NSDictionary dictionaryWithObject:@"alarm" forKey:@"alarm"];
+    notification.repeatInterval = NSWeekCalendarUnit;
+    notification.fireDate = myFireDate;
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] cancelLocalNotification:notification];
     
     return notification;
 }

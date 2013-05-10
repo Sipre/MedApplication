@@ -69,15 +69,14 @@
         for(int y=0; y < listForSchedule.count-1;y++){
             for(int j=0; j < listForSchedule.count-1;j++){
                 int h=j;
-                NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
-                [dateFormater setDateFormat:@"hhmm"];
-                int a = [[dateFormater stringFromDate:[[listForSchedule objectAtIndex:h++] valueForKey:@"nextDose"]] intValue];
-                int b = [[dateFormater stringFromDate:[[listForSchedule objectAtIndex:h] valueForKey:@"nextDose"]] intValue];
-                if (b<a) {
+                NSDate *a = [[listForSchedule objectAtIndex:h++] valueForKey:@"nextDose"];
+                NSDate *b = [[listForSchedule objectAtIndex:h] valueForKey:@"nextDose"];
+                int c = [a timeIntervalSinceDate:b];
+                if (c > 0) {
                     [listForSchedule exchangeObjectAtIndex:h withObjectAtIndex:--h];
                 }
             }
-        }
+        }        
     }
     
     NSLog(@"viewDone");
@@ -155,8 +154,6 @@
     [self slideView:secondView direction:YES];
 }
 
-- (IBAction)edit:(id)sender {
-}
 
 #pragma mark - User Defined Methods
 

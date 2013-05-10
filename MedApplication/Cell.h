@@ -10,4 +10,5 @@
 
 @interface Cell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet UIImageView *image;
 @end

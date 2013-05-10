@@ -12,8 +12,14 @@
 #import "MedicineCell.h"
 #import "ImageCell.h"
 
-@interface medicineTableController : UITableViewController
+
+@interface medicineTableController : UITableViewController{
+    int editable;
+}
 
 @property (strong, nonatomic) NSMutableDictionary *medicineAttributes;
+-(void) editing:(int) editab;
+
+
 
 @end
